@@ -167,8 +167,7 @@ contract GlobalTransactionManager is Sidemesh {
                 for(uint i=0; i<lockManager.getWSetLength(xidKey); i++){
                     bytes32 hash = Lib.hash(abi.encodePacked(lockManager.wSet(xidKey, i)));
                     
-                    (TransactionID memory primaryPrepareTxId,
-                    bytes memory prevState,
+                    (,bytes memory prevState,
                     bytes memory updatingState,
                     bool isValid) = lockManager.locks(hash);
                     
@@ -287,8 +286,7 @@ contract GlobalTransactionManager is Sidemesh {
                 for(uint i=0; i<lockManager.getWSetLength(bidKey); i++){
                     bytes32 hash = Lib.hash(abi.encodePacked(lockManager.wSet(bidKey, i)));
 
-                    (TransactionID memory primaryPrepareTxId,
-                    bytes memory prevState,
+                    (,bytes memory prevState,
                     bytes memory updatingState,
                     bool isValid) = lockManager.locks(hash);
 
