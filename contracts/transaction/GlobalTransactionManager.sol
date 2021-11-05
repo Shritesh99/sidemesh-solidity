@@ -58,16 +58,19 @@ contract GlobalTransactionManager is LockManager {
         }
     
     function preparePrimaryTransaction(
-        address contractC, 
-        string memory functionC,
-        string[] memory args) 
+        string memory functionC) 
         external{
             string memory network = getNetwork();
             bytes32 xidKey = Lib.hash(abi.encodePacked(PREFIX, network, block.chainid, msg.sender));
-
+            
+            Invocation memory invocation;
+            invocation.functionC = functionC;
+            invocation.args = new string[](1);
+            invocation.args[0] = Lib.toString(abi.encodePacked(msg.sender));
+            
             NetworkTransaction memory txId;
             txId.txId = TransactionID(URI(network, block.chainid), msg.sender);
-            txId.invocation = Invocation(contractC, functionC, args);
+            txId.invocation = invocation;
 
             globalTransactions[xidKey].primaryConfirmTx = txId;
 
@@ -94,14 +97,14 @@ contract GlobalTransactionManager is LockManager {
                 globalTransactions[xidKey].networkPrepareTxs,
                 globalTransactions[xidKey].networkConfirmTxs
                 );
-    }
-    
+        }
+
     function confirmPrimaryTransaction(
-            string memory primaryPrepareTxID,
+            address primaryPrepareTxSender,
             string[][] memory networkTxRes
         )external{
             string memory network = getNetwork();
-            bytes32 xidKey = Lib.hash(abi.encodePacked(PREFIX, network, block.chainid, msg.sender));
+            bytes32 xidKey = Lib.hash(abi.encodePacked(PREFIX, network, block.chainid, primaryPrepareTxSender));
 
             require(globalTransactionStatuses[xidKey].isValid, ERROR_NO_PRIMARY_TX);
 
@@ -115,21 +118,21 @@ contract GlobalTransactionManager is LockManager {
                 globalTransactions[xidKey].networkPrepareTxs.length == networkTxRes.length,
                 ERROR_DEPENDENT_TX
             );
+
             uint numVerified = 0;
             for(uint i=0;i<networkTxRes.length;i++){
-                // string -> address
-                // globalTransactions[xidKey].networkPrepareTxs[i].txId.sender = networkTxRes[i][2];
+                globalTransactions[xidKey].networkPrepareTxs[i].txId.sender = Lib.toAddress(networkTxRes[i][2]);
                 globalTransactions[xidKey].networkPrepareTxs[i].proof = networkTxRes[i][3];
 
-                // networkTxRes[i][0] -> uint
-                // (address contractC, string memory functionC) = verifier.resolve(networkTxRes[i][0], networkTxRes[i][1]);
-                // require(!Lib.checkAddress(contractC), ERROR_CONTRACT);
-                // require(!Lib.isEmpty(functionC), ERROR_FUNCTION);
+                (address contractC, string memory functionC) = verifier.resolve(networkTxRes[i][0], Lib.toUint(networkTxRes[i][1]));
+                require(!Lib.checkAddress(contractC), ERROR_CONTRACT);
+                require(!Lib.isEmpty(functionC), ERROR_FUNCTION);
 
-                // 
-                // (bool success,) = contractC.call(abi.encodeWithSignature(functionC, networkTxRes[i][2], networkTxRes[i][3]));
-                // require(success, ERROR_FAILED);
-                numVerified++;
+                if(!Lib.isEmpty(networkTxRes[i][3])){
+                    (bool success,) = contractC.call(abi.encodeWithSignature(functionC, networkTxRes[i][2], networkTxRes[i][3]));
+                    require(success, ERROR_FAILED);
+                    numVerified++;
+                }
             }
             if (numVerified == globalTransactions[xidKey].networkPrepareTxs.length) {
                 globalTransactionStatuses[xidKey].status = GlobalTransactionStatusType.PRIMARY_TRANSACTION_COMMITTED;
@@ -137,6 +140,47 @@ contract GlobalTransactionManager is LockManager {
                 globalTransactionStatuses[xidKey].status = GlobalTransactionStatusType.PRIMARY_TRANSACTION_CANCELED;
             }
             
+            
+            if(wSet[xidKey].length > 0){
+                for(uint i=0; i<wSet[xidKey].length; i++){
+                    bytes32 hash = Lib.hash(abi.encodePacked(wSet[xidKey][i]));
+                    require(locks[hash].isValid, ERROR_NO_LOCK);
+                    
+                    if(globalTransactionStatuses[xidKey].status == GlobalTransactionStatusType.PRIMARY_TRANSACTION_COMMITTED){
+                        locks[hash] = lockDeserializer(locks[hash].updatingState);    
+                    }else if(globalTransactionStatuses[xidKey].status == GlobalTransactionStatusType.PRIMARY_TRANSACTION_CANCELED){
+                        locks[hash] = lockDeserializer(locks[hash].prevState); 
+                    }
+                }
+            }
+            
+            for(uint i=0; i<globalTransactions[xidKey].networkPrepareTxs.length;i++){
+                NetworkTransaction memory networkConfirmTx;
+                TransactionID memory txId;
+                txId.uri = URI(
+                            globalTransactions[xidKey].networkPrepareTxs[i].txId.uri.network,
+                            globalTransactions[xidKey].networkPrepareTxs[i].txId.uri.chain);
+                networkConfirmTx.txId = txId;
+
+                Invocation memory invocation;
+                invocation.contractC = globalTransactions[xidKey].networkPrepareTxs[i].invocation.contractC;
+                invocation.functionC = globalTransactions[xidKey].networkPrepareTxs[i].invocation.functionC;
+                invocation.args = new string[](5);
+                invocation.args[0] = Lib.toString(abi.encodePacked(globalTransactions[xidKey].networkPrepareTxs[i].txId.sender));
+                invocation.args[1] = Lib.toString(abi.encodePacked(uint(globalTransactionStatuses[xidKey].status)));
+                invocation.args[2] = network;
+                invocation.args[3] = Lib.toString(abi.encodePacked(block.chainid));
+                invocation.args[4] = Lib.toString(abi.encodePacked(msg.sender));
+
+                networkConfirmTx.invocation = invocation;
+
+                globalTransactions[xidKey].networkConfirmTxs.push(networkConfirmTx);
+            }
+
+            emit PrimaryTransactionConfirmedEvent(
+                TransactionID(URI(network, block.chainid), msg.sender),
+                globalTransactions[xidKey].networkConfirmTxs
+            );
         }
 
     function startNetworkTransaction(
@@ -159,7 +203,8 @@ contract GlobalTransactionManager is LockManager {
         uint primaryChain,
         address primaryTxSender,
         address globalTxQueryContract,
-        string memory globalTxQueryFunc)
+        string memory globalTxQueryFunc,
+        string memory functionC)
         external{
             string memory network = getNetwork();
             
@@ -173,10 +218,16 @@ contract GlobalTransactionManager is LockManager {
                     wSet[bidKey].push(writeKeySet[bidKey][i]);
                 }
             }
-
+            
+            Invocation memory invocation;
+            invocation.functionC = functionC;
+            invocation.args = new string[](1);
+            invocation.args[0] = Lib.toString(abi.encodePacked(msg.sender));
+            
             NetworkTransaction memory networkConfirmTx;
             networkConfirmTx.txId = TransactionID(URI(network, block.chainid), msg.sender);
-            //networkConfirmTx.invocation = Invocation(contractC, functionC, args);
+            networkConfirmTx.invocation = invocation;
+
             emit NetworkTransactionPreparedEvent(
                 globalTxId,
                 globalTxQuery,
@@ -185,17 +236,36 @@ contract GlobalTransactionManager is LockManager {
         }
 
     function confirmNetworkTransaction(
-        string memory branchPrepareTxID,
+        address networkPrepareTxSender,
         uint globalTxStatus,
         string memory primaryNetwork,
         uint primaryChain,
-        string memory primaryConfirmTxID,
+        address primaryConfirmTxSender,
         string memory primaryConfirmTxProof)
         external{
-            // check primaryTxProof
-            // resolve RegisterContract
-            // resolve VerifyContract
-    }
+            (address contractC, string memory functionC) = verifier.resolve(primaryNetwork, primaryChain);
+            require(!Lib.checkAddress(contractC), ERROR_CONTRACT);
+            require(!Lib.isEmpty(functionC), ERROR_FUNCTION);
 
-    
+            require(!Lib.isEmpty(primaryConfirmTxProof), ERROR_NO_PRIMARY_CONFIRM_TX_PROOF);
+
+            (bool success,) = contractC.call(abi.encodeWithSignature(functionC, primaryConfirmTxSender, primaryConfirmTxProof));
+            require(success, ERROR_NO_PRIMARY_CONFIRM_TX);
+
+            string memory network = getNetwork();
+            bytes32 bidKey = Lib.hash(abi.encodePacked(PREFIX, network, block.chainid, networkPrepareTxSender));
+
+            if(wSet[bidKey].length > 0){
+                for(uint i=0; i<wSet[bidKey].length; i++){
+                    bytes32 hash = Lib.hash(abi.encodePacked(wSet[bidKey][i]));
+                    require(locks[hash].isValid, ERROR_NO_LOCK);
+                    
+                    if(globalTxStatus == uint(GlobalTransactionStatusType.PRIMARY_TRANSACTION_COMMITTED)){
+                        locks[hash] = lockDeserializer(locks[hash].updatingState);    
+                    }else if(globalTxStatus == uint(GlobalTransactionStatusType.PRIMARY_TRANSACTION_CANCELED)){
+                        locks[hash] = lockDeserializer(locks[hash].prevState); 
+                    }
+                }
+            }
+    }
 }

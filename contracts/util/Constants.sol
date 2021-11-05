@@ -18,6 +18,8 @@ contract Constants{
     string constant ERROR_SECONDARY_LOCK = "This is a secondary lock";
     string constant ERROR_WRONG_CHAIN = "Wrong chain";
     string constant ERROR_NO_PRIMARY_TX = "Not found primary prepare tx status";
+    string constant ERROR_NO_PRIMARY_CONFIRM_TX = "Primary confirm tx verify failed";
+    string constant ERROR_NO_PRIMARY_CONFIRM_TX_PROOF = "Primary confirm tx proof cannot empty";
     string constant ERROR_NO_GLOBAL_TX = "Not found global tx";
     string constant ERROR_INVALID_TX_STATUS = "Invalid tx status it should not have lock";
     string constant ERROR_DUPLICATE_TX_STATUS = "Duplicate confirm global transaction request";
@@ -26,7 +28,4 @@ contract Constants{
     string constant ERROR_EXPIRED_LOCK = "Need Release Expired Lock Error";
     string constant ERROR_NO_LOCK = "No Lock";
 
-    string constant EMPTY = "";
-    string constant COLON = ":";
-    
 }

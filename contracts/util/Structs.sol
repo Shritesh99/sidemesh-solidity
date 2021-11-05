@@ -1,7 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.7.0 <0.9.0;
 pragma experimental ABIEncoderV2;
-contract Structs {
+
+import "../lib/Lib.sol";
+
+contract Structs{
+    
+    string constant COLON = ":";
+    uint constant ASCII_COLON = 58;
     
     enum GlobalTransactionStatusType{
         PRIMARY_TRANSACTION_PREPARED,
@@ -55,7 +61,7 @@ contract Structs {
 
     struct Lock{
         TransactionID primaryPrepareTxId;
-        bytes PrevState;
+        bytes prevState;
         bytes updatingState;
         bool isValid;
     }
@@ -74,9 +80,63 @@ contract Structs {
         NetworkTransaction[] NetworkConfirmTxs
     );
 
+    event PrimaryTransactionConfirmedEvent(
+        TransactionID PrimaryConfirmedTxId,
+        NetworkTransaction[] NetworkConfirmTxs
+    );
+
     event NetworkTransactionPreparedEvent(
         TransactionID PrimaryPrepareTxId,
         Invocation GlobalTxStatusQuery,
         NetworkTransaction ConfirmTx
     );
+
+    function lockSerializer(Lock memory lock)internal pure returns(bytes memory){
+        return abi.encodePacked(
+            lock.primaryPrepareTxId.uri.network, COLON,
+            lock.primaryPrepareTxId.uri.chain, COLON,
+            lock.primaryPrepareTxId.sender, COLON,
+            lock.prevState, COLON,
+            lock.updatingState, COLON,
+            Lib.toString(lock.isValid)
+            );
+    }
+    
+    bytes temp;
+    
+    function lockDeserializer(bytes memory data)internal returns(Lock memory){
+        Lock memory lock;
+        TransactionID memory txID;
+        URI memory uri;
+        uint x = 0;
+        for(uint i=0; i<data.length; i++){
+            if(Lib.hash(abi.encodePacked(data[i])) == Lib.hash(abi.encodePacked(COLON))){
+                if(x == 0){
+                    uri.network = Lib.toString(temp);
+                }
+                if(x == 1){
+                    uri.chain = Lib.toUint(Lib.toString(temp));
+                    txID.uri = uri;
+                }
+                if(x == 2){
+                    txID.sender = Lib.toAddress(Lib.toString(temp)); 
+                    lock.primaryPrepareTxId = txID;           
+                }
+                if(x == 3){
+                    lock.prevState = temp;
+                }
+                if(x == 4){
+                    lock.updatingState = temp;
+                }
+                if(x == 5){
+                    lock.isValid = Lib.stringToBool(Lib.toString(temp));
+                }
+                temp = "";
+                x++;
+            }else{
+                temp.push(data[i]);
+            } 
+        }
+        return lock;
+    }
 }
