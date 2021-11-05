@@ -7,22 +7,44 @@ import "../resource/Verifier.sol";
 import "../resource/Register.sol";
 import "../lock/LockManager.sol";
 
-contract GlobalTransactionManager is LockManager {
+contract GlobalTransactionManager is Sidemesh {
     
     Verifier verifier;
     Register registry;
+    LockManager lockManager;
 
-    constructor(
+    mapping(bytes32 => GlobalTransactionStatus) globalTransactionStatuses;
+    mapping(bytes32 => GlobalTransaction) globalTransactions;
+
+    constructor (
+        string memory network,
         address _registery,
-        address _verifier){
+        address _verifier,
+        address _lockManager) Sidemesh(network){
             registry = Register(_registery);
             verifier = Verifier(_verifier);
+            lockManager = LockManager(_lockManager);
+        }
+
+    function getDataForCheckTimeout(
+        string memory network,
+        uint chain,
+        address sender)
+        external view returns(bool, uint, uint){
+            bytes32 xidKey = Lib.hash(abi.encodePacked(PREFIX, network, chain, sender));
+            
+            require(globalTransactionStatuses[xidKey].isValid, ERROR_NO_PRIMARY_TX);
+            
+            return(
+                globalTransactionStatuses[xidKey].isValid,
+                uint(globalTransactionStatuses[xidKey].status),
+                globalTransactions[xidKey].ttlTime
+                );
         }
 
     function startGlobalTransaction(
         uint ttlHeight,
-        uint ttlTime,
-        string memory)
+        uint ttlTime)
         external 
         checkPositive(ttlHeight, ERROR_TTLHEIGHT)
         checkNonZero(ttlTime, ERROR_TTLTIME){
@@ -81,9 +103,9 @@ contract GlobalTransactionManager is LockManager {
             
             globalTransactionStatuses[xidKey] = globalTxStatus;
 
-            if(writeKeySet[xidKey].length > 0){
-                for(uint i=0; i<writeKeySet[xidKey].length; i++){
-                    wSet[xidKey].push(writeKeySet[xidKey][i]);
+            if(lockManager.getWriteKeySetLength(xidKey) > 0){
+                for(uint i=0; i<lockManager.getWriteKeySetLength(xidKey); i++){
+                    lockManager.putWSet(xidKey, lockManager.writeKeySet(xidKey, i));
                 }
             }
 
@@ -141,15 +163,21 @@ contract GlobalTransactionManager is LockManager {
             }
             
             
-            if(wSet[xidKey].length > 0){
-                for(uint i=0; i<wSet[xidKey].length; i++){
-                    bytes32 hash = Lib.hash(abi.encodePacked(wSet[xidKey][i]));
-                    require(locks[hash].isValid, ERROR_NO_LOCK);
+            if(lockManager.getWSetLength(xidKey) > 0){
+                for(uint i=0; i<lockManager.getWSetLength(xidKey); i++){
+                    bytes32 hash = Lib.hash(abi.encodePacked(lockManager.wSet(xidKey, i)));
+                    
+                    (TransactionID memory primaryPrepareTxId,
+                    bytes memory prevState,
+                    bytes memory updatingState,
+                    bool isValid) = lockManager.locks(hash);
+                    
+                    require(isValid, ERROR_NO_LOCK);
                     
                     if(globalTransactionStatuses[xidKey].status == GlobalTransactionStatusType.PRIMARY_TRANSACTION_COMMITTED){
-                        locks[hash] = lockDeserializer(locks[hash].updatingState);    
+                        lockManager.putLock(hash, lockDeserializer(updatingState));    
                     }else if(globalTransactionStatuses[xidKey].status == GlobalTransactionStatusType.PRIMARY_TRANSACTION_CANCELED){
-                        locks[hash] = lockDeserializer(locks[hash].prevState); 
+                        lockManager.putLock(hash, lockDeserializer(prevState)); 
                     }
                 }
             }
@@ -213,9 +241,9 @@ contract GlobalTransactionManager is LockManager {
             globalTxQuery.args[0] = string(abi.encodePacked(primaryTxSender));
 
             bytes32 bidKey = Lib.hash(abi.encodePacked(PREFIX, network, block.chainid, msg.sender));
-            if(writeKeySet[bidKey].length > 0){
-                for(uint i=0; i<writeKeySet[bidKey].length; i++){
-                    wSet[bidKey].push(writeKeySet[bidKey][i]);
+            if(lockManager.getWriteKeySetLength(bidKey) > 0){
+                for(uint i=0; i<lockManager.getWriteKeySetLength(bidKey); i++){
+                    lockManager.putWSet(bidKey, lockManager.writeKeySet(bidKey, i));
                 }
             }
             
@@ -255,15 +283,21 @@ contract GlobalTransactionManager is LockManager {
             string memory network = getNetwork();
             bytes32 bidKey = Lib.hash(abi.encodePacked(PREFIX, network, block.chainid, networkPrepareTxSender));
 
-            if(wSet[bidKey].length > 0){
-                for(uint i=0; i<wSet[bidKey].length; i++){
-                    bytes32 hash = Lib.hash(abi.encodePacked(wSet[bidKey][i]));
-                    require(locks[hash].isValid, ERROR_NO_LOCK);
+            if(lockManager.getWSetLength(bidKey) > 0){
+                for(uint i=0; i<lockManager.getWSetLength(bidKey); i++){
+                    bytes32 hash = Lib.hash(abi.encodePacked(lockManager.wSet(bidKey, i)));
+
+                    (TransactionID memory primaryPrepareTxId,
+                    bytes memory prevState,
+                    bytes memory updatingState,
+                    bool isValid) = lockManager.locks(hash);
+
+                    require(isValid, ERROR_NO_LOCK);
                     
                     if(globalTxStatus == uint(GlobalTransactionStatusType.PRIMARY_TRANSACTION_COMMITTED)){
-                        locks[hash] = lockDeserializer(locks[hash].updatingState);    
+                        lockManager.putLock(hash, lockDeserializer(updatingState));    
                     }else if(globalTxStatus == uint(GlobalTransactionStatusType.PRIMARY_TRANSACTION_CANCELED)){
-                        locks[hash] = lockDeserializer(locks[hash].prevState); 
+                        lockManager.putLock(hash, lockDeserializer(prevState)); 
                     }
                 }
             }

@@ -11,11 +11,9 @@ contract Sidemesh is Modifiers, Structs, Constants {
 
     string network;
 
-    mapping(bytes32 => GlobalTransactionStatus) globalTransactionStatuses;
-    mapping(bytes32 => GlobalTransaction) globalTransactions;
-    mapping(bytes32 => Lock) locks;
-    mapping(bytes32 => string[]) writeKeySet;
-    mapping(bytes32 => string[]) wSet;
+    constructor(string memory networkC){
+        network = networkC;
+    }
 
     function getNetwork()
         internal view
