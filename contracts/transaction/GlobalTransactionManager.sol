@@ -13,14 +13,16 @@ contract GlobalTransactionManager is Sidemesh {
     Register registry;
     LockManager lockManager;
 
+    NetworkTransaction[] networkPrepareTxs;
+    NetworkTransaction[] networkConfirmTxs;
+
     mapping(bytes32 => GlobalTransactionStatus) globalTransactionStatuses;
     mapping(bytes32 => GlobalTransaction) globalTransactions;
 
     constructor (
-        string memory network,
         address _registery,
         address _verifier,
-        address _lockManager) Sidemesh(network){
+        address _lockManager){
             registry = Register(_registery);
             verifier = Verifier(_verifier);
             lockManager = LockManager(_lockManager);
@@ -41,6 +43,18 @@ contract GlobalTransactionManager is Sidemesh {
                 globalTransactions[xidKey].ttlTime
                 );
         }
+    
+    function getNetworkTxs(bytes32 xidKey, bool porc)internal{
+        if(porc){
+            for(uint i=0; i<globalTransactions[xidKey].networkPrepareTxsLength;i++){
+                networkPrepareTxs.push(globalTransactions[xidKey].networkPrepareTxs[i]);
+            }
+        }else{
+            for(uint i=0; i<globalTransactions[xidKey].networkConfirmTxsLength;i++){
+                networkConfirmTxs.push(globalTransactions[xidKey].networkConfirmTxs[i]);
+            }
+        }
+    }
 
     function startGlobalTransaction(
         uint ttlHeight,
@@ -51,15 +65,13 @@ contract GlobalTransactionManager is Sidemesh {
             string memory network = getNetwork();
             bytes32 xid = Lib.hash(abi.encodePacked(PREFIX, network, block.chainid, msg.sender));
 
-            GlobalTransaction memory globalTx;
+            GlobalTransaction storage globalTx = globalTransactions[xid];
             globalTx.primaryPrepareTxId = TransactionID(URI(network, block.chainid), msg.sender);
-            globalTx.networkPrepareTxs = new NetworkTransaction[](0);
-            globalTx.networkConfirmTxs = new NetworkTransaction[](0);
+            globalTx.networkPrepareTxsLength = 0;
+            globalTx.networkConfirmTxsLength = 0;
             globalTx.ttlHeight = ttlHeight;
             globalTx.ttlTime = ttlTime;
             globalTx.isValid = true;
-
-            globalTransactions[xid] = globalTx;
         }
 
     function registerNetworkTransaction(
@@ -76,7 +88,8 @@ contract GlobalTransactionManager is Sidemesh {
             txId.txId = TransactionID(URI(network, chain), msg.sender);
             txId.invocation = Invocation(contractC, functionC, args);
 
-            globalTransactions[xid].networkPrepareTxs.push(txId);
+            globalTransactions[xid].networkPrepareTxs[globalTransactions[xid].networkPrepareTxsLength] = txId;
+            globalTransactions[xid].networkPrepareTxsLength++;
         }
     
     function preparePrimaryTransaction(
@@ -111,14 +124,20 @@ contract GlobalTransactionManager is Sidemesh {
 
             Invocation memory queryGlobalTxInvocation;
             queryGlobalTxInvocation.functionC = QUERYGLOBALTXSTATUS;
+            
+            getNetworkTxs(xidKey, true);
+            getNetworkTxs(xidKey, false);
 
             emit PrimaryTransactionPreparedEvent(
                 globalTransactions[xidKey].primaryPrepareTxId,
                 globalTransactions[xidKey].primaryConfirmTx,
                 queryGlobalTxInvocation,
-                globalTransactions[xidKey].networkPrepareTxs,
-                globalTransactions[xidKey].networkConfirmTxs
+                networkPrepareTxs,
+                networkConfirmTxs
                 );
+            
+            delete networkPrepareTxs;
+            delete networkConfirmTxs;
         }
 
     function confirmPrimaryTransaction(
@@ -137,7 +156,7 @@ contract GlobalTransactionManager is Sidemesh {
             require(globalTransactions[xidKey].isValid, ERROR_NO_GLOBAL_TX);
 
             require(
-                globalTransactions[xidKey].networkPrepareTxs.length == networkTxRes.length,
+                globalTransactions[xidKey].networkPrepareTxsLength == networkTxRes.length,
                 ERROR_DEPENDENT_TX
             );
 
@@ -156,7 +175,7 @@ contract GlobalTransactionManager is Sidemesh {
                     numVerified++;
                 }
             }
-            if (numVerified == globalTransactions[xidKey].networkPrepareTxs.length) {
+            if (numVerified == globalTransactions[xidKey].networkPrepareTxsLength) {
                 globalTransactionStatuses[xidKey].status = GlobalTransactionStatusType.PRIMARY_TRANSACTION_COMMITTED;
             } else {
                 globalTransactionStatuses[xidKey].status = GlobalTransactionStatusType.PRIMARY_TRANSACTION_CANCELED;
@@ -181,7 +200,7 @@ contract GlobalTransactionManager is Sidemesh {
                 }
             }
             
-            for(uint i=0; i<globalTransactions[xidKey].networkPrepareTxs.length;i++){
+            for(uint i=0; i<globalTransactions[xidKey].networkPrepareTxsLength;i++){
                 NetworkTransaction memory networkConfirmTx;
                 TransactionID memory txId;
                 txId.uri = URI(
@@ -201,13 +220,17 @@ contract GlobalTransactionManager is Sidemesh {
 
                 networkConfirmTx.invocation = invocation;
 
-                globalTransactions[xidKey].networkConfirmTxs.push(networkConfirmTx);
+                globalTransactions[xidKey].networkConfirmTxs[globalTransactions[xidKey].networkConfirmTxsLength] = networkConfirmTx;
+                globalTransactions[xidKey].networkConfirmTxsLength++;
             }
+
+            getNetworkTxs(xidKey, false);
 
             emit PrimaryTransactionConfirmedEvent(
                 TransactionID(URI(network, block.chainid), msg.sender),
-                globalTransactions[xidKey].networkConfirmTxs
+                networkConfirmTxs
             );
+            delete networkConfirmTxs;
         }
 
     function startNetworkTransaction(

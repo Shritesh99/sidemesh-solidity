@@ -9,8 +9,6 @@ contract LockManager is Sidemesh {
     mapping(bytes32 => string[])public writeKeySet;
     mapping(bytes32 => string[])public wSet;
 
-    constructor(string memory network) Sidemesh(network){}
-
     function checkTimeoutLock(Lock memory lock, uint cur, bool isValid, uint status, uint ttlTime)internal view returns(bool){
         string memory network = getNetwork();
         

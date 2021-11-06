@@ -40,8 +40,10 @@ contract Structs{
     struct GlobalTransaction{
         TransactionID primaryPrepareTxId;
         NetworkTransaction primaryConfirmTx;
-        NetworkTransaction[] networkPrepareTxs;
-        NetworkTransaction[] networkConfirmTxs;
+        mapping(uint => NetworkTransaction) networkPrepareTxs;
+        uint networkPrepareTxsLength;
+        mapping(uint => NetworkTransaction) networkConfirmTxs;
+        uint networkConfirmTxsLength;
         uint ttlHeight;
         uint ttlTime;
         bool isValid;  

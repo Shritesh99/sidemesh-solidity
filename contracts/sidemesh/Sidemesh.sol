@@ -11,10 +11,6 @@ contract Sidemesh is Modifiers, Structs, Constants {
 
     string network;
 
-    constructor(string memory networkC){
-        network = networkC;
-    }
-
     function getNetwork()
         internal view
         checkEmpty(network, ERROR_NETWORK) returns(string memory){
