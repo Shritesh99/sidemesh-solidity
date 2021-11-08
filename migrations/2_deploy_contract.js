@@ -1,4 +1,9 @@
-const Lib = artifacts.require("./lib/Lib.sol");
+const Utils = artifacts.require("./lib/Utils.sol");
+const Constants = artifacts.require("./lib/Constants.sol");
+const Enums = artifacts.require("../lib/Enums.sol");
+const Structs = artifacts.require("../lib/Structs.sol");
+
+const Sidemesh = artifacts.require("./sidemesh/Sidemesh.sol");
 const Verifier = artifacts.require("./resource/Verifier.sol");
 const Register = artifacts.require("./resource/Register.sol");
 const LockManager = artifacts.require("./lock/LockManager.sol");
@@ -7,19 +12,23 @@ const GlobalTransactionManager = artifacts.require(
 );
 
 module.exports = async function (deployer) {
-	await deployer.deploy(Lib);
-	await deployer.link(Lib, Verifier);
-	await deployer.link(Lib, Register);
-	await deployer.link(Lib, LockManager);
-	await deployer.link(Lib, GlobalTransactionManager);
+	await deployer.deploy(Utils, { overwrite: false });
+	await deployer.deploy(Constants, { overwrite: false });
+	await deployer.deploy(Enums, { overwrite: false });
+	await deployer.deploy(Structs, { overwrite: false });
 
-	const verifier = await deployer.deploy(Verifier);
-	const register = await deployer.deploy(Register);
-	const lockManager = await deployer.deploy(LockManager);
-	await deployer.deploy(
-		GlobalTransactionManager,
-		register.address,
-		verifier.address,
-		lockManager.address
-	);
+	await deployer.link(Utils, [Sidemesh, Verifier, Register, LockManager]);
+	await deployer.link(Constants, [
+		Sidemesh,
+		Verifier,
+		Register,
+		LockManager,
+	]);
+	await deployer.link(Enums, LockManager);
+	await deployer.link(Structs, [Verifier, Register, LockManager]);
+
+	const sidemesh = await deployer.deploy(Sidemesh, "HL_BESU");
+	await deployer.deploy(LockManager, sidemesh.address);
+	await deployer.deploy(Verifier);
+	await deployer.deploy(Register);
 };

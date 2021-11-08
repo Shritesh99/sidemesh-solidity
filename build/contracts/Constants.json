@@ -1,29 +1,29 @@
 {
   "contractName": "Constants",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/util/Constants.sol\":\"Constants\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/util/Constants.sol\":{\"keccak256\":\"0x5543deed35be460b787af4080d5c6b2f76eab13f3ce6532ec11ef27a324c2086\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://b7819752c55ddc0f529403ea1e031c074c492c67f7fdab3919451d3a1dc779df\",\"dweb:/ipfs/Qmdw3LGzxxJ8EhZCUsa2GC2X4smhCde4HY7ZgbXML1TyPp\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220e93d0777ee702c9f9b35bb0634c39acfd9c898067ad6f7e2747b2ab2fc81416e64736f6c63430008090033",
-  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220e93d0777ee702c9f9b35bb0634c39acfd9c898067ad6f7e2747b2ab2fc81416e64736f6c63430008090033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/lib/Constants.sol\":\"Constants\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/lib/Constants.sol\":{\"keccak256\":\"0x39d578a0be02e2651db6e9fabed55c70c4eff6b82f14378077abb538cade620f\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://5ae6bba23c923d7e0d63f2522b667df913dd3b289eb4f5e995423ec91ddf5453\",\"dweb:/ipfs/QmUjLHaGgrVxbAqcDfwiTGJSjRqfwc3cygNzUsDT9PquLG\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220605e0ba880f0f14379042d51fb979540880e42848d6bb2c23747bbb805c34fe764736f6c63430008090033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220605e0ba880f0f14379042d51fb979540880e42848d6bb2c23747bbb805c34fe764736f6c63430008090033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "69:1676:7:-:0;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "69:1676:7:-:0;;;;;",
-  "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity >=0.7.0 <0.9.0;\n\ncontract Constants{\n    string constant PREFIX = \"SIDE_MESH_\";\n\n    string constant QUERYGLOBALTXSTATUS = \"QueryGlobalTxStatus\";\n\n    string constant REG_URI_NOT_FOUND = \"[Register] Cant able find uri\";\n    string constant VER_URI_NOT_FOUND = \"[Verifier] Cant able find uri\";\n    string constant ERROR_NETWORK = \"Network is empty\";\n    string constant ERROR_TTLTIME = \"ttlTime at least one should be set\";\n    string constant ERROR_TTLHEIGHT = \"ttlHeight at least one should be set\";\n    string constant ERROR_PRIMARYTXPROOF = \"Need primary tx proof\";\n    string constant ERROR_CONTRACT = \"Contract is empty\";\n    string constant ERROR_FUNCTION = \"Function is empty\";\n    string constant ERROR_FAILED = \"Primary tx verify failed\";\n    string constant ERROR_SECONDARY_LOCK = \"This is a secondary lock\";\n    string constant ERROR_WRONG_CHAIN = \"Wrong chain\";\n    string constant ERROR_NO_PRIMARY_TX = \"Not found primary prepare tx status\";\n    string constant ERROR_NO_PRIMARY_CONFIRM_TX = \"Primary confirm tx verify failed\";\n    string constant ERROR_NO_PRIMARY_CONFIRM_TX_PROOF = \"Primary confirm tx proof cannot empty\";\n    string constant ERROR_NO_GLOBAL_TX = \"Not found global tx\";\n    string constant ERROR_INVALID_TX_STATUS = \"Invalid tx status it should not have lock\";\n    string constant ERROR_DUPLICATE_TX_STATUS = \"Duplicate confirm global transaction request\";\n    string constant ERROR_INVALID_TIME = \"Invalid Time\";\n    string constant ERROR_DEPENDENT_TX = \"Dependent transaction result count not match branch prepare transaction count\";\n    string constant ERROR_EXPIRED_LOCK = \"Need Release Expired Lock Error\";\n    string constant ERROR_NO_LOCK = \"No Lock\";\n\n}",
-  "sourcePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/util/Constants.sol",
+  "sourceMap": "69:1724:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "69:1724:1:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity >=0.7.0 <0.9.0;\n\nlibrary Constants{\n    string constant PREFIX = \"SIDE_MESH_\";\n\n    string constant QUERYGLOBALTXSTATUS = \"QueryGlobalTxStatus\";\n\n    string constant ERROR_REG_URI_NOT_FOUND = \"[Register] Cant able find uri\";\n    string constant ERROR_VER_URI_NOT_FOUND = \"[Verifier] Cant able find uri\";\n    string constant ERROR_NETWORK = \"Network is empty\";\n    string constant ERROR_TTLTIME = \"ttlTime at least one should be set\";\n    string constant ERROR_TTLHEIGHT = \"ttlHeight at least one should be set\";\n    string constant ERROR_PRIMARYTXPROOF = \"Need primary tx proof\";\n    string constant ERROR_CONTRACT = \"Contract is empty\";\n    string constant ERROR_FUNCTION = \"Function is empty\";\n    string constant ERROR_FAILED = \"Primary tx verify failed\";\n    string constant ERROR_SECONDARY_LOCK = \"This is a secondary lock\";\n    string constant ERROR_WRONG_CHAIN = \"Wrong chain\";\n    string constant ERROR_NO_PRIMARY_TX = \"Not found primary prepare tx status\";\n    string constant ERROR_NO_PRIMARY_CONFIRM_TX = \"Primary confirm tx verify failed\";\n    string constant ERROR_NO_PRIMARY_CONFIRM_TX_PROOF = \"Primary confirm tx proof cannot empty\";\n    string constant ERROR_NO_GLOBAL_TX = \"Not found global tx\";\n    string constant ERROR_INVALID_TX_STATUS = \"Invalid tx status it should not have lock\";\n    string constant ERROR_DUPLICATE_TX_STATUS = \"Duplicate confirm global transaction request\";\n    string constant ERROR_INVALID_TIME = \"Invalid Time\";\n    string constant ERROR_DEPENDENT_TX = \"Dependent transaction result count not match branch prepare transaction count\";\n    string constant ERROR_EXPIRED_LOCK = \"Need Release Expired Lock Error\";\n    string constant ERROR_NO_LOCK = \"No Lock\";\n    \n    string constant COLON = \":\";\n}",
+  "sourcePath": "/home/rxshri99/WebProjects/sidemesh-solidity/contracts/lib/Constants.sol",
   "ast": {
-    "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/util/Constants.sol",
+    "absolutePath": "project:/contracts/lib/Constants.sol",
     "exportedSymbols": {
       "Constants": [
-        2879
+        107
       ]
     },
-    "id": 2880,
+    "id": 108,
     "license": "GPL-3.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2809,
+        "id": 34,
         "literals": [
           "solidity",
           ">=",
@@ -34,32 +34,32 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "36:31:7"
+        "src": "36:31:1"
       },
       {
         "abstract": false,
         "baseContracts": [],
         "canonicalName": "Constants",
         "contractDependencies": [],
-        "contractKind": "contract",
+        "contractKind": "library",
         "fullyImplemented": true,
-        "id": 2879,
+        "id": 107,
         "linearizedBaseContracts": [
-          2879
+          107
         ],
         "name": "Constants",
-        "nameLocation": "78:9:7",
+        "nameLocation": "77:9:1",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 2812,
+            "id": 37,
             "mutability": "constant",
             "name": "PREFIX",
-            "nameLocation": "109:6:7",
+            "nameLocation": "108:6:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "93:37:7",
+            "scope": 107,
+            "src": "92:37:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -67,10 +67,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2810,
+              "id": 35,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "93:6:7",
+              "src": "92:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -78,14 +78,14 @@
             },
             "value": {
               "hexValue": "534944455f4d4553485f",
-              "id": 2811,
+              "id": 36,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "118:12:7",
+              "src": "117:12:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_14d47ebc56d0eb5fe41df95a972f35b3e973a776439dbb88e01da0633ae6daf9",
                 "typeString": "literal_string \"SIDE_MESH_\""
@@ -96,13 +96,13 @@
           },
           {
             "constant": true,
-            "id": 2815,
+            "id": 40,
             "mutability": "constant",
             "name": "QUERYGLOBALTXSTATUS",
-            "nameLocation": "153:19:7",
+            "nameLocation": "152:19:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "137:59:7",
+            "scope": 107,
+            "src": "136:59:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -110,10 +110,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2813,
+              "id": 38,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "137:6:7",
+              "src": "136:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -121,14 +121,14 @@
             },
             "value": {
               "hexValue": "5175657279476c6f62616c5478537461747573",
-              "id": 2814,
+              "id": 39,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "175:21:7",
+              "src": "174:21:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_5fab61e555e89a418552ce868fc30d34875d5a53356e12f7e35d4f90733d93c4",
                 "typeString": "literal_string \"QueryGlobalTxStatus\""
@@ -139,13 +139,13 @@
           },
           {
             "constant": true,
-            "id": 2818,
+            "id": 43,
             "mutability": "constant",
-            "name": "REG_URI_NOT_FOUND",
-            "nameLocation": "219:17:7",
+            "name": "ERROR_REG_URI_NOT_FOUND",
+            "nameLocation": "218:23:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "203:67:7",
+            "scope": 107,
+            "src": "202:73:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -153,10 +153,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2816,
+              "id": 41,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "203:6:7",
+              "src": "202:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -164,14 +164,14 @@
             },
             "value": {
               "hexValue": "5b52656769737465725d2043616e742061626c652066696e6420757269",
-              "id": 2817,
+              "id": 42,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "239:31:7",
+              "src": "244:31:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_7a2f87b399397c8f9cb86bcdc73023b0f0dae12880b690dfad83c535c838ccb9",
                 "typeString": "literal_string \"[Register] Cant able find uri\""
@@ -182,13 +182,13 @@
           },
           {
             "constant": true,
-            "id": 2821,
+            "id": 46,
             "mutability": "constant",
-            "name": "VER_URI_NOT_FOUND",
-            "nameLocation": "292:17:7",
+            "name": "ERROR_VER_URI_NOT_FOUND",
+            "nameLocation": "297:23:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "276:67:7",
+            "scope": 107,
+            "src": "281:73:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -196,10 +196,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2819,
+              "id": 44,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "276:6:7",
+              "src": "281:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -207,14 +207,14 @@
             },
             "value": {
               "hexValue": "5b56657269666965725d2043616e742061626c652066696e6420757269",
-              "id": 2820,
+              "id": 45,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "312:31:7",
+              "src": "323:31:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_810e0c2ba7e3a7a95f1e5c8d044ec0d70d1cb2b114b1965e6c3def35e7169f7f",
                 "typeString": "literal_string \"[Verifier] Cant able find uri\""
@@ -225,13 +225,13 @@
           },
           {
             "constant": true,
-            "id": 2824,
+            "id": 49,
             "mutability": "constant",
             "name": "ERROR_NETWORK",
-            "nameLocation": "365:13:7",
+            "nameLocation": "376:13:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "349:50:7",
+            "scope": 107,
+            "src": "360:50:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -239,10 +239,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2822,
+              "id": 47,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "349:6:7",
+              "src": "360:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -250,14 +250,14 @@
             },
             "value": {
               "hexValue": "4e6574776f726b20697320656d707479",
-              "id": 2823,
+              "id": 48,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "381:18:7",
+              "src": "392:18:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_c2289fc4e2052bdef2e543753ec2a46061996b2c914c783dd9dd110bde4fa6f7",
                 "typeString": "literal_string \"Network is empty\""
@@ -268,13 +268,13 @@
           },
           {
             "constant": true,
-            "id": 2827,
+            "id": 52,
             "mutability": "constant",
             "name": "ERROR_TTLTIME",
-            "nameLocation": "421:13:7",
+            "nameLocation": "432:13:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "405:68:7",
+            "scope": 107,
+            "src": "416:68:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -282,10 +282,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2825,
+              "id": 50,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "405:6:7",
+              "src": "416:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -293,14 +293,14 @@
             },
             "value": {
               "hexValue": "74746c54696d65206174206c65617374206f6e652073686f756c6420626520736574",
-              "id": 2826,
+              "id": 51,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "437:36:7",
+              "src": "448:36:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_d1bcc9e0d0dc4c7f3ed6c2b46d961c6c82953d4b3c80a8f12ac261c5780d2bdf",
                 "typeString": "literal_string \"ttlTime at least one should be set\""
@@ -311,13 +311,13 @@
           },
           {
             "constant": true,
-            "id": 2830,
+            "id": 55,
             "mutability": "constant",
             "name": "ERROR_TTLHEIGHT",
-            "nameLocation": "495:15:7",
+            "nameLocation": "506:15:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "479:72:7",
+            "scope": 107,
+            "src": "490:72:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -325,10 +325,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2828,
+              "id": 53,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "479:6:7",
+              "src": "490:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -336,14 +336,14 @@
             },
             "value": {
               "hexValue": "74746c486569676874206174206c65617374206f6e652073686f756c6420626520736574",
-              "id": 2829,
+              "id": 54,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "513:38:7",
+              "src": "524:38:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_36e830a2fc88ee399c66994e66e8816fc1234c9f75447b01c3395bffa43bcb75",
                 "typeString": "literal_string \"ttlHeight at least one should be set\""
@@ -354,13 +354,13 @@
           },
           {
             "constant": true,
-            "id": 2833,
+            "id": 58,
             "mutability": "constant",
             "name": "ERROR_PRIMARYTXPROOF",
-            "nameLocation": "573:20:7",
+            "nameLocation": "584:20:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "557:62:7",
+            "scope": 107,
+            "src": "568:62:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -368,10 +368,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2831,
+              "id": 56,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "557:6:7",
+              "src": "568:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -379,14 +379,14 @@
             },
             "value": {
               "hexValue": "4e656564207072696d6172792074782070726f6f66",
-              "id": 2832,
+              "id": 57,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "596:23:7",
+              "src": "607:23:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_24f8fabc2d72e8f6c67ade157aea42349fad4fe2c261240e4d12d3b44cd94679",
                 "typeString": "literal_string \"Need primary tx proof\""
@@ -397,13 +397,13 @@
           },
           {
             "constant": true,
-            "id": 2836,
+            "id": 61,
             "mutability": "constant",
             "name": "ERROR_CONTRACT",
-            "nameLocation": "641:14:7",
+            "nameLocation": "652:14:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "625:52:7",
+            "scope": 107,
+            "src": "636:52:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -411,10 +411,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2834,
+              "id": 59,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "625:6:7",
+              "src": "636:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -422,14 +422,14 @@
             },
             "value": {
               "hexValue": "436f6e747261637420697320656d707479",
-              "id": 2835,
+              "id": 60,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "658:19:7",
+              "src": "669:19:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_04bf44a358df63d710a578096361bcc64fa6407d138d80cc12c4843db0c60f77",
                 "typeString": "literal_string \"Contract is empty\""
@@ -440,13 +440,13 @@
           },
           {
             "constant": true,
-            "id": 2839,
+            "id": 64,
             "mutability": "constant",
             "name": "ERROR_FUNCTION",
-            "nameLocation": "699:14:7",
+            "nameLocation": "710:14:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "683:52:7",
+            "scope": 107,
+            "src": "694:52:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -454,10 +454,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2837,
+              "id": 62,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "683:6:7",
+              "src": "694:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -465,14 +465,14 @@
             },
             "value": {
               "hexValue": "46756e6374696f6e20697320656d707479",
-              "id": 2838,
+              "id": 63,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "716:19:7",
+              "src": "727:19:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_4b0b6b02ed3be2085c08e8b0fc8e56eb072c36dd0a2dbcff32786dc43125ae5a",
                 "typeString": "literal_string \"Function is empty\""
@@ -483,13 +483,13 @@
           },
           {
             "constant": true,
-            "id": 2842,
+            "id": 67,
             "mutability": "constant",
             "name": "ERROR_FAILED",
-            "nameLocation": "757:12:7",
+            "nameLocation": "768:12:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "741:57:7",
+            "scope": 107,
+            "src": "752:57:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -497,10 +497,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2840,
+              "id": 65,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "741:6:7",
+              "src": "752:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -508,14 +508,14 @@
             },
             "value": {
               "hexValue": "5072696d61727920747820766572696679206661696c6564",
-              "id": 2841,
+              "id": 66,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "772:26:7",
+              "src": "783:26:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_000ae23c659e55b2a68ee136c336a9ecff3f29d3f500f4eafef6bd90d506dae6",
                 "typeString": "literal_string \"Primary tx verify failed\""
@@ -526,13 +526,13 @@
           },
           {
             "constant": true,
-            "id": 2845,
+            "id": 70,
             "mutability": "constant",
             "name": "ERROR_SECONDARY_LOCK",
-            "nameLocation": "820:20:7",
+            "nameLocation": "831:20:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "804:65:7",
+            "scope": 107,
+            "src": "815:65:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -540,10 +540,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2843,
+              "id": 68,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "804:6:7",
+              "src": "815:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -551,14 +551,14 @@
             },
             "value": {
               "hexValue": "546869732069732061207365636f6e64617279206c6f636b",
-              "id": 2844,
+              "id": 69,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "843:26:7",
+              "src": "854:26:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_ff17ff2463febcb297ad81a6c4494625b15283979fa979caa7bc0e957fe49df3",
                 "typeString": "literal_string \"This is a secondary lock\""
@@ -569,13 +569,13 @@
           },
           {
             "constant": true,
-            "id": 2848,
+            "id": 73,
             "mutability": "constant",
             "name": "ERROR_WRONG_CHAIN",
-            "nameLocation": "891:17:7",
+            "nameLocation": "902:17:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "875:49:7",
+            "scope": 107,
+            "src": "886:49:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -583,10 +583,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2846,
+              "id": 71,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "875:6:7",
+              "src": "886:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -594,14 +594,14 @@
             },
             "value": {
               "hexValue": "57726f6e6720636861696e",
-              "id": 2847,
+              "id": 72,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "911:13:7",
+              "src": "922:13:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_de12807b01daaf30f91ecc62803102ef1ba550d8711c1776ddb11d5a4ed0009e",
                 "typeString": "literal_string \"Wrong chain\""
@@ -612,13 +612,13 @@
           },
           {
             "constant": true,
-            "id": 2851,
+            "id": 76,
             "mutability": "constant",
             "name": "ERROR_NO_PRIMARY_TX",
-            "nameLocation": "946:19:7",
+            "nameLocation": "957:19:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "930:75:7",
+            "scope": 107,
+            "src": "941:75:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -626,10 +626,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2849,
+              "id": 74,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "930:6:7",
+              "src": "941:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -637,14 +637,14 @@
             },
             "value": {
               "hexValue": "4e6f7420666f756e64207072696d617279207072657061726520747820737461747573",
-              "id": 2850,
+              "id": 75,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "968:37:7",
+              "src": "979:37:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_36549eaa34a4764e3e2e9b84482f263739d0342d09b6bf40897285b58620193d",
                 "typeString": "literal_string \"Not found primary prepare tx status\""
@@ -655,13 +655,13 @@
           },
           {
             "constant": true,
-            "id": 2854,
+            "id": 79,
             "mutability": "constant",
             "name": "ERROR_NO_PRIMARY_CONFIRM_TX",
-            "nameLocation": "1027:27:7",
+            "nameLocation": "1038:27:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1011:80:7",
+            "scope": 107,
+            "src": "1022:80:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -669,10 +669,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2852,
+              "id": 77,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1011:6:7",
+              "src": "1022:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -680,14 +680,14 @@
             },
             "value": {
               "hexValue": "5072696d61727920636f6e6669726d20747820766572696679206661696c6564",
-              "id": 2853,
+              "id": 78,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1057:34:7",
+              "src": "1068:34:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_438077395aac2deefcaa498ac6f253c078808c243d8cfc1810cefee1c02b9118",
                 "typeString": "literal_string \"Primary confirm tx verify failed\""
@@ -698,13 +698,13 @@
           },
           {
             "constant": true,
-            "id": 2857,
+            "id": 82,
             "mutability": "constant",
             "name": "ERROR_NO_PRIMARY_CONFIRM_TX_PROOF",
-            "nameLocation": "1113:33:7",
+            "nameLocation": "1124:33:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1097:91:7",
+            "scope": 107,
+            "src": "1108:91:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -712,10 +712,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2855,
+              "id": 80,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1097:6:7",
+              "src": "1108:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -723,14 +723,14 @@
             },
             "value": {
               "hexValue": "5072696d61727920636f6e6669726d2074782070726f6f662063616e6e6f7420656d707479",
-              "id": 2856,
+              "id": 81,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1149:39:7",
+              "src": "1160:39:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_409c7f3ec5e04d03336123c220713dfc62a663bedacae233ddc97f73b26ba3aa",
                 "typeString": "literal_string \"Primary confirm tx proof cannot empty\""
@@ -741,13 +741,13 @@
           },
           {
             "constant": true,
-            "id": 2860,
+            "id": 85,
             "mutability": "constant",
             "name": "ERROR_NO_GLOBAL_TX",
-            "nameLocation": "1210:18:7",
+            "nameLocation": "1221:18:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1194:58:7",
+            "scope": 107,
+            "src": "1205:58:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -755,10 +755,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2858,
+              "id": 83,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1194:6:7",
+              "src": "1205:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -766,14 +766,14 @@
             },
             "value": {
               "hexValue": "4e6f7420666f756e6420676c6f62616c207478",
-              "id": 2859,
+              "id": 84,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1231:21:7",
+              "src": "1242:21:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_5505b04a288a171ff4e1c7d2d58eb84a20975ce48a9f117a89acd201dd7c46ea",
                 "typeString": "literal_string \"Not found global tx\""
@@ -784,13 +784,13 @@
           },
           {
             "constant": true,
-            "id": 2863,
+            "id": 88,
             "mutability": "constant",
             "name": "ERROR_INVALID_TX_STATUS",
-            "nameLocation": "1274:23:7",
+            "nameLocation": "1285:23:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1258:85:7",
+            "scope": 107,
+            "src": "1269:85:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -798,10 +798,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2861,
+              "id": 86,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1258:6:7",
+              "src": "1269:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -809,14 +809,14 @@
             },
             "value": {
               "hexValue": "496e76616c6964207478207374617475732069742073686f756c64206e6f742068617665206c6f636b",
-              "id": 2862,
+              "id": 87,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1300:43:7",
+              "src": "1311:43:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_c5445811b1946d2a98e6d96c39d7562fa527c87004e8475e53abdde8db8bde33",
                 "typeString": "literal_string \"Invalid tx status it should not have lock\""
@@ -827,13 +827,13 @@
           },
           {
             "constant": true,
-            "id": 2866,
+            "id": 91,
             "mutability": "constant",
             "name": "ERROR_DUPLICATE_TX_STATUS",
-            "nameLocation": "1365:25:7",
+            "nameLocation": "1376:25:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1349:90:7",
+            "scope": 107,
+            "src": "1360:90:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -841,10 +841,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2864,
+              "id": 89,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1349:6:7",
+              "src": "1360:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -852,14 +852,14 @@
             },
             "value": {
               "hexValue": "4475706c696361746520636f6e6669726d20676c6f62616c207472616e73616374696f6e2072657175657374",
-              "id": 2865,
+              "id": 90,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1393:46:7",
+              "src": "1404:46:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_c742caad690fdaffc832b3a5e137ee1139d1374e94f58d20e3f19a3f8c139def",
                 "typeString": "literal_string \"Duplicate confirm global transaction request\""
@@ -870,13 +870,13 @@
           },
           {
             "constant": true,
-            "id": 2869,
+            "id": 94,
             "mutability": "constant",
             "name": "ERROR_INVALID_TIME",
-            "nameLocation": "1461:18:7",
+            "nameLocation": "1472:18:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1445:51:7",
+            "scope": 107,
+            "src": "1456:51:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -884,10 +884,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2867,
+              "id": 92,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1445:6:7",
+              "src": "1456:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -895,14 +895,14 @@
             },
             "value": {
               "hexValue": "496e76616c69642054696d65",
-              "id": 2868,
+              "id": 93,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1482:14:7",
+              "src": "1493:14:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_fd15fa85d7adb954ed3db98acc6598f50819627251649f9a20d42ef0974d0da1",
                 "typeString": "literal_string \"Invalid Time\""
@@ -913,13 +913,13 @@
           },
           {
             "constant": true,
-            "id": 2872,
+            "id": 97,
             "mutability": "constant",
             "name": "ERROR_DEPENDENT_TX",
-            "nameLocation": "1518:18:7",
+            "nameLocation": "1529:18:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1502:116:7",
+            "scope": 107,
+            "src": "1513:116:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -927,10 +927,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2870,
+              "id": 95,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1502:6:7",
+              "src": "1513:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -938,14 +938,14 @@
             },
             "value": {
               "hexValue": "446570656e64656e74207472616e73616374696f6e20726573756c7420636f756e74206e6f74206d61746368206272616e63682070726570617265207472616e73616374696f6e20636f756e74",
-              "id": 2871,
+              "id": 96,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1539:79:7",
+              "src": "1550:79:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_1313abfab3c2205b4ce40bbb242cdbe0388eb4b04f120e0633d77b179e09aa1f",
                 "typeString": "literal_string \"Dependent transaction result count not match branch prepare transaction count\""
@@ -956,13 +956,13 @@
           },
           {
             "constant": true,
-            "id": 2875,
+            "id": 100,
             "mutability": "constant",
             "name": "ERROR_EXPIRED_LOCK",
-            "nameLocation": "1640:18:7",
+            "nameLocation": "1651:18:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1624:70:7",
+            "scope": 107,
+            "src": "1635:70:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -970,10 +970,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2873,
+              "id": 98,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1624:6:7",
+              "src": "1635:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -981,14 +981,14 @@
             },
             "value": {
               "hexValue": "4e6565642052656c656173652045787069726564204c6f636b204572726f72",
-              "id": 2874,
+              "id": 99,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1661:33:7",
+              "src": "1672:33:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_8cf4a3763c1ebda1827f18f599e451525b80ae1c7bba86e4274c675549512526",
                 "typeString": "literal_string \"Need Release Expired Lock Error\""
@@ -999,13 +999,13 @@
           },
           {
             "constant": true,
-            "id": 2878,
+            "id": 103,
             "mutability": "constant",
             "name": "ERROR_NO_LOCK",
-            "nameLocation": "1716:13:7",
+            "nameLocation": "1727:13:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1700:41:7",
+            "scope": 107,
+            "src": "1711:41:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1013,10 +1013,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2876,
+              "id": 101,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1700:6:7",
+              "src": "1711:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1024,14 +1024,14 @@
             },
             "value": {
               "hexValue": "4e6f204c6f636b",
-              "id": 2877,
+              "id": 102,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1732:9:7",
+              "src": "1743:9:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_df8f28a14f408df9274c237bac3272d17a48e4c3feea0d509efc577164ba5f8c",
                 "typeString": "literal_string \"No Lock\""
@@ -1039,28 +1039,71 @@
               "value": "No Lock"
             },
             "visibility": "internal"
+          },
+          {
+            "constant": true,
+            "id": 106,
+            "mutability": "constant",
+            "name": "COLON",
+            "nameLocation": "1779:5:1",
+            "nodeType": "VariableDeclaration",
+            "scope": 107,
+            "src": "1763:27:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_memory_ptr",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 104,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "1763:6:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "value": {
+              "hexValue": "3a",
+              "id": 105,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "string",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1787:3:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_stringliteral_96d280011b274d9410ea6c6fc28e2bb076b01d2fac329c49c4b29a719ec4650c",
+                "typeString": "literal_string \":\""
+              },
+              "value": ":"
+            },
+            "visibility": "internal"
           }
         ],
-        "scope": 2880,
-        "src": "69:1676:7",
+        "scope": 108,
+        "src": "69:1724:1",
         "usedErrors": []
       }
     ],
-    "src": "36:1709:7"
+    "src": "36:1757:1"
   },
   "legacyAST": {
-    "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/util/Constants.sol",
+    "absolutePath": "project:/contracts/lib/Constants.sol",
     "exportedSymbols": {
       "Constants": [
-        2879
+        107
       ]
     },
-    "id": 2880,
+    "id": 108,
     "license": "GPL-3.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2809,
+        "id": 34,
         "literals": [
           "solidity",
           ">=",
@@ -1071,32 +1114,32 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "36:31:7"
+        "src": "36:31:1"
       },
       {
         "abstract": false,
         "baseContracts": [],
         "canonicalName": "Constants",
         "contractDependencies": [],
-        "contractKind": "contract",
+        "contractKind": "library",
         "fullyImplemented": true,
-        "id": 2879,
+        "id": 107,
         "linearizedBaseContracts": [
-          2879
+          107
         ],
         "name": "Constants",
-        "nameLocation": "78:9:7",
+        "nameLocation": "77:9:1",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 2812,
+            "id": 37,
             "mutability": "constant",
             "name": "PREFIX",
-            "nameLocation": "109:6:7",
+            "nameLocation": "108:6:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "93:37:7",
+            "scope": 107,
+            "src": "92:37:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1104,10 +1147,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2810,
+              "id": 35,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "93:6:7",
+              "src": "92:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1115,14 +1158,14 @@
             },
             "value": {
               "hexValue": "534944455f4d4553485f",
-              "id": 2811,
+              "id": 36,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "118:12:7",
+              "src": "117:12:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_14d47ebc56d0eb5fe41df95a972f35b3e973a776439dbb88e01da0633ae6daf9",
                 "typeString": "literal_string \"SIDE_MESH_\""
@@ -1133,13 +1176,13 @@
           },
           {
             "constant": true,
-            "id": 2815,
+            "id": 40,
             "mutability": "constant",
             "name": "QUERYGLOBALTXSTATUS",
-            "nameLocation": "153:19:7",
+            "nameLocation": "152:19:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "137:59:7",
+            "scope": 107,
+            "src": "136:59:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1147,10 +1190,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2813,
+              "id": 38,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "137:6:7",
+              "src": "136:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1158,14 +1201,14 @@
             },
             "value": {
               "hexValue": "5175657279476c6f62616c5478537461747573",
-              "id": 2814,
+              "id": 39,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "175:21:7",
+              "src": "174:21:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_5fab61e555e89a418552ce868fc30d34875d5a53356e12f7e35d4f90733d93c4",
                 "typeString": "literal_string \"QueryGlobalTxStatus\""
@@ -1176,13 +1219,13 @@
           },
           {
             "constant": true,
-            "id": 2818,
+            "id": 43,
             "mutability": "constant",
-            "name": "REG_URI_NOT_FOUND",
-            "nameLocation": "219:17:7",
+            "name": "ERROR_REG_URI_NOT_FOUND",
+            "nameLocation": "218:23:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "203:67:7",
+            "scope": 107,
+            "src": "202:73:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1190,10 +1233,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2816,
+              "id": 41,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "203:6:7",
+              "src": "202:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1201,14 +1244,14 @@
             },
             "value": {
               "hexValue": "5b52656769737465725d2043616e742061626c652066696e6420757269",
-              "id": 2817,
+              "id": 42,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "239:31:7",
+              "src": "244:31:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_7a2f87b399397c8f9cb86bcdc73023b0f0dae12880b690dfad83c535c838ccb9",
                 "typeString": "literal_string \"[Register] Cant able find uri\""
@@ -1219,13 +1262,13 @@
           },
           {
             "constant": true,
-            "id": 2821,
+            "id": 46,
             "mutability": "constant",
-            "name": "VER_URI_NOT_FOUND",
-            "nameLocation": "292:17:7",
+            "name": "ERROR_VER_URI_NOT_FOUND",
+            "nameLocation": "297:23:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "276:67:7",
+            "scope": 107,
+            "src": "281:73:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1233,10 +1276,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2819,
+              "id": 44,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "276:6:7",
+              "src": "281:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1244,14 +1287,14 @@
             },
             "value": {
               "hexValue": "5b56657269666965725d2043616e742061626c652066696e6420757269",
-              "id": 2820,
+              "id": 45,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "312:31:7",
+              "src": "323:31:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_810e0c2ba7e3a7a95f1e5c8d044ec0d70d1cb2b114b1965e6c3def35e7169f7f",
                 "typeString": "literal_string \"[Verifier] Cant able find uri\""
@@ -1262,13 +1305,13 @@
           },
           {
             "constant": true,
-            "id": 2824,
+            "id": 49,
             "mutability": "constant",
             "name": "ERROR_NETWORK",
-            "nameLocation": "365:13:7",
+            "nameLocation": "376:13:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "349:50:7",
+            "scope": 107,
+            "src": "360:50:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1276,10 +1319,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2822,
+              "id": 47,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "349:6:7",
+              "src": "360:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1287,14 +1330,14 @@
             },
             "value": {
               "hexValue": "4e6574776f726b20697320656d707479",
-              "id": 2823,
+              "id": 48,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "381:18:7",
+              "src": "392:18:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_c2289fc4e2052bdef2e543753ec2a46061996b2c914c783dd9dd110bde4fa6f7",
                 "typeString": "literal_string \"Network is empty\""
@@ -1305,13 +1348,13 @@
           },
           {
             "constant": true,
-            "id": 2827,
+            "id": 52,
             "mutability": "constant",
             "name": "ERROR_TTLTIME",
-            "nameLocation": "421:13:7",
+            "nameLocation": "432:13:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "405:68:7",
+            "scope": 107,
+            "src": "416:68:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1319,10 +1362,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2825,
+              "id": 50,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "405:6:7",
+              "src": "416:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1330,14 +1373,14 @@
             },
             "value": {
               "hexValue": "74746c54696d65206174206c65617374206f6e652073686f756c6420626520736574",
-              "id": 2826,
+              "id": 51,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "437:36:7",
+              "src": "448:36:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_d1bcc9e0d0dc4c7f3ed6c2b46d961c6c82953d4b3c80a8f12ac261c5780d2bdf",
                 "typeString": "literal_string \"ttlTime at least one should be set\""
@@ -1348,13 +1391,13 @@
           },
           {
             "constant": true,
-            "id": 2830,
+            "id": 55,
             "mutability": "constant",
             "name": "ERROR_TTLHEIGHT",
-            "nameLocation": "495:15:7",
+            "nameLocation": "506:15:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "479:72:7",
+            "scope": 107,
+            "src": "490:72:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1362,10 +1405,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2828,
+              "id": 53,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "479:6:7",
+              "src": "490:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1373,14 +1416,14 @@
             },
             "value": {
               "hexValue": "74746c486569676874206174206c65617374206f6e652073686f756c6420626520736574",
-              "id": 2829,
+              "id": 54,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "513:38:7",
+              "src": "524:38:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_36e830a2fc88ee399c66994e66e8816fc1234c9f75447b01c3395bffa43bcb75",
                 "typeString": "literal_string \"ttlHeight at least one should be set\""
@@ -1391,13 +1434,13 @@
           },
           {
             "constant": true,
-            "id": 2833,
+            "id": 58,
             "mutability": "constant",
             "name": "ERROR_PRIMARYTXPROOF",
-            "nameLocation": "573:20:7",
+            "nameLocation": "584:20:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "557:62:7",
+            "scope": 107,
+            "src": "568:62:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1405,10 +1448,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2831,
+              "id": 56,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "557:6:7",
+              "src": "568:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1416,14 +1459,14 @@
             },
             "value": {
               "hexValue": "4e656564207072696d6172792074782070726f6f66",
-              "id": 2832,
+              "id": 57,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "596:23:7",
+              "src": "607:23:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_24f8fabc2d72e8f6c67ade157aea42349fad4fe2c261240e4d12d3b44cd94679",
                 "typeString": "literal_string \"Need primary tx proof\""
@@ -1434,13 +1477,13 @@
           },
           {
             "constant": true,
-            "id": 2836,
+            "id": 61,
             "mutability": "constant",
             "name": "ERROR_CONTRACT",
-            "nameLocation": "641:14:7",
+            "nameLocation": "652:14:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "625:52:7",
+            "scope": 107,
+            "src": "636:52:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1448,10 +1491,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2834,
+              "id": 59,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "625:6:7",
+              "src": "636:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1459,14 +1502,14 @@
             },
             "value": {
               "hexValue": "436f6e747261637420697320656d707479",
-              "id": 2835,
+              "id": 60,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "658:19:7",
+              "src": "669:19:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_04bf44a358df63d710a578096361bcc64fa6407d138d80cc12c4843db0c60f77",
                 "typeString": "literal_string \"Contract is empty\""
@@ -1477,13 +1520,13 @@
           },
           {
             "constant": true,
-            "id": 2839,
+            "id": 64,
             "mutability": "constant",
             "name": "ERROR_FUNCTION",
-            "nameLocation": "699:14:7",
+            "nameLocation": "710:14:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "683:52:7",
+            "scope": 107,
+            "src": "694:52:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1491,10 +1534,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2837,
+              "id": 62,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "683:6:7",
+              "src": "694:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1502,14 +1545,14 @@
             },
             "value": {
               "hexValue": "46756e6374696f6e20697320656d707479",
-              "id": 2838,
+              "id": 63,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "716:19:7",
+              "src": "727:19:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_4b0b6b02ed3be2085c08e8b0fc8e56eb072c36dd0a2dbcff32786dc43125ae5a",
                 "typeString": "literal_string \"Function is empty\""
@@ -1520,13 +1563,13 @@
           },
           {
             "constant": true,
-            "id": 2842,
+            "id": 67,
             "mutability": "constant",
             "name": "ERROR_FAILED",
-            "nameLocation": "757:12:7",
+            "nameLocation": "768:12:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "741:57:7",
+            "scope": 107,
+            "src": "752:57:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1534,10 +1577,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2840,
+              "id": 65,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "741:6:7",
+              "src": "752:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1545,14 +1588,14 @@
             },
             "value": {
               "hexValue": "5072696d61727920747820766572696679206661696c6564",
-              "id": 2841,
+              "id": 66,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "772:26:7",
+              "src": "783:26:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_000ae23c659e55b2a68ee136c336a9ecff3f29d3f500f4eafef6bd90d506dae6",
                 "typeString": "literal_string \"Primary tx verify failed\""
@@ -1563,13 +1606,13 @@
           },
           {
             "constant": true,
-            "id": 2845,
+            "id": 70,
             "mutability": "constant",
             "name": "ERROR_SECONDARY_LOCK",
-            "nameLocation": "820:20:7",
+            "nameLocation": "831:20:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "804:65:7",
+            "scope": 107,
+            "src": "815:65:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1577,10 +1620,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2843,
+              "id": 68,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "804:6:7",
+              "src": "815:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1588,14 +1631,14 @@
             },
             "value": {
               "hexValue": "546869732069732061207365636f6e64617279206c6f636b",
-              "id": 2844,
+              "id": 69,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "843:26:7",
+              "src": "854:26:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_ff17ff2463febcb297ad81a6c4494625b15283979fa979caa7bc0e957fe49df3",
                 "typeString": "literal_string \"This is a secondary lock\""
@@ -1606,13 +1649,13 @@
           },
           {
             "constant": true,
-            "id": 2848,
+            "id": 73,
             "mutability": "constant",
             "name": "ERROR_WRONG_CHAIN",
-            "nameLocation": "891:17:7",
+            "nameLocation": "902:17:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "875:49:7",
+            "scope": 107,
+            "src": "886:49:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1620,10 +1663,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2846,
+              "id": 71,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "875:6:7",
+              "src": "886:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1631,14 +1674,14 @@
             },
             "value": {
               "hexValue": "57726f6e6720636861696e",
-              "id": 2847,
+              "id": 72,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "911:13:7",
+              "src": "922:13:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_de12807b01daaf30f91ecc62803102ef1ba550d8711c1776ddb11d5a4ed0009e",
                 "typeString": "literal_string \"Wrong chain\""
@@ -1649,13 +1692,13 @@
           },
           {
             "constant": true,
-            "id": 2851,
+            "id": 76,
             "mutability": "constant",
             "name": "ERROR_NO_PRIMARY_TX",
-            "nameLocation": "946:19:7",
+            "nameLocation": "957:19:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "930:75:7",
+            "scope": 107,
+            "src": "941:75:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1663,10 +1706,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2849,
+              "id": 74,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "930:6:7",
+              "src": "941:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1674,14 +1717,14 @@
             },
             "value": {
               "hexValue": "4e6f7420666f756e64207072696d617279207072657061726520747820737461747573",
-              "id": 2850,
+              "id": 75,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "968:37:7",
+              "src": "979:37:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_36549eaa34a4764e3e2e9b84482f263739d0342d09b6bf40897285b58620193d",
                 "typeString": "literal_string \"Not found primary prepare tx status\""
@@ -1692,13 +1735,13 @@
           },
           {
             "constant": true,
-            "id": 2854,
+            "id": 79,
             "mutability": "constant",
             "name": "ERROR_NO_PRIMARY_CONFIRM_TX",
-            "nameLocation": "1027:27:7",
+            "nameLocation": "1038:27:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1011:80:7",
+            "scope": 107,
+            "src": "1022:80:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1706,10 +1749,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2852,
+              "id": 77,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1011:6:7",
+              "src": "1022:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1717,14 +1760,14 @@
             },
             "value": {
               "hexValue": "5072696d61727920636f6e6669726d20747820766572696679206661696c6564",
-              "id": 2853,
+              "id": 78,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1057:34:7",
+              "src": "1068:34:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_438077395aac2deefcaa498ac6f253c078808c243d8cfc1810cefee1c02b9118",
                 "typeString": "literal_string \"Primary confirm tx verify failed\""
@@ -1735,13 +1778,13 @@
           },
           {
             "constant": true,
-            "id": 2857,
+            "id": 82,
             "mutability": "constant",
             "name": "ERROR_NO_PRIMARY_CONFIRM_TX_PROOF",
-            "nameLocation": "1113:33:7",
+            "nameLocation": "1124:33:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1097:91:7",
+            "scope": 107,
+            "src": "1108:91:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1749,10 +1792,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2855,
+              "id": 80,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1097:6:7",
+              "src": "1108:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1760,14 +1803,14 @@
             },
             "value": {
               "hexValue": "5072696d61727920636f6e6669726d2074782070726f6f662063616e6e6f7420656d707479",
-              "id": 2856,
+              "id": 81,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1149:39:7",
+              "src": "1160:39:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_409c7f3ec5e04d03336123c220713dfc62a663bedacae233ddc97f73b26ba3aa",
                 "typeString": "literal_string \"Primary confirm tx proof cannot empty\""
@@ -1778,13 +1821,13 @@
           },
           {
             "constant": true,
-            "id": 2860,
+            "id": 85,
             "mutability": "constant",
             "name": "ERROR_NO_GLOBAL_TX",
-            "nameLocation": "1210:18:7",
+            "nameLocation": "1221:18:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1194:58:7",
+            "scope": 107,
+            "src": "1205:58:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1792,10 +1835,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2858,
+              "id": 83,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1194:6:7",
+              "src": "1205:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1803,14 +1846,14 @@
             },
             "value": {
               "hexValue": "4e6f7420666f756e6420676c6f62616c207478",
-              "id": 2859,
+              "id": 84,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1231:21:7",
+              "src": "1242:21:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_5505b04a288a171ff4e1c7d2d58eb84a20975ce48a9f117a89acd201dd7c46ea",
                 "typeString": "literal_string \"Not found global tx\""
@@ -1821,13 +1864,13 @@
           },
           {
             "constant": true,
-            "id": 2863,
+            "id": 88,
             "mutability": "constant",
             "name": "ERROR_INVALID_TX_STATUS",
-            "nameLocation": "1274:23:7",
+            "nameLocation": "1285:23:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1258:85:7",
+            "scope": 107,
+            "src": "1269:85:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1835,10 +1878,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2861,
+              "id": 86,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1258:6:7",
+              "src": "1269:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1846,14 +1889,14 @@
             },
             "value": {
               "hexValue": "496e76616c6964207478207374617475732069742073686f756c64206e6f742068617665206c6f636b",
-              "id": 2862,
+              "id": 87,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1300:43:7",
+              "src": "1311:43:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_c5445811b1946d2a98e6d96c39d7562fa527c87004e8475e53abdde8db8bde33",
                 "typeString": "literal_string \"Invalid tx status it should not have lock\""
@@ -1864,13 +1907,13 @@
           },
           {
             "constant": true,
-            "id": 2866,
+            "id": 91,
             "mutability": "constant",
             "name": "ERROR_DUPLICATE_TX_STATUS",
-            "nameLocation": "1365:25:7",
+            "nameLocation": "1376:25:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1349:90:7",
+            "scope": 107,
+            "src": "1360:90:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1878,10 +1921,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2864,
+              "id": 89,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1349:6:7",
+              "src": "1360:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1889,14 +1932,14 @@
             },
             "value": {
               "hexValue": "4475706c696361746520636f6e6669726d20676c6f62616c207472616e73616374696f6e2072657175657374",
-              "id": 2865,
+              "id": 90,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1393:46:7",
+              "src": "1404:46:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_c742caad690fdaffc832b3a5e137ee1139d1374e94f58d20e3f19a3f8c139def",
                 "typeString": "literal_string \"Duplicate confirm global transaction request\""
@@ -1907,13 +1950,13 @@
           },
           {
             "constant": true,
-            "id": 2869,
+            "id": 94,
             "mutability": "constant",
             "name": "ERROR_INVALID_TIME",
-            "nameLocation": "1461:18:7",
+            "nameLocation": "1472:18:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1445:51:7",
+            "scope": 107,
+            "src": "1456:51:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1921,10 +1964,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2867,
+              "id": 92,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1445:6:7",
+              "src": "1456:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1932,14 +1975,14 @@
             },
             "value": {
               "hexValue": "496e76616c69642054696d65",
-              "id": 2868,
+              "id": 93,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1482:14:7",
+              "src": "1493:14:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_fd15fa85d7adb954ed3db98acc6598f50819627251649f9a20d42ef0974d0da1",
                 "typeString": "literal_string \"Invalid Time\""
@@ -1950,13 +1993,13 @@
           },
           {
             "constant": true,
-            "id": 2872,
+            "id": 97,
             "mutability": "constant",
             "name": "ERROR_DEPENDENT_TX",
-            "nameLocation": "1518:18:7",
+            "nameLocation": "1529:18:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1502:116:7",
+            "scope": 107,
+            "src": "1513:116:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1964,10 +2007,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2870,
+              "id": 95,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1502:6:7",
+              "src": "1513:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -1975,14 +2018,14 @@
             },
             "value": {
               "hexValue": "446570656e64656e74207472616e73616374696f6e20726573756c7420636f756e74206e6f74206d61746368206272616e63682070726570617265207472616e73616374696f6e20636f756e74",
-              "id": 2871,
+              "id": 96,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1539:79:7",
+              "src": "1550:79:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_1313abfab3c2205b4ce40bbb242cdbe0388eb4b04f120e0633d77b179e09aa1f",
                 "typeString": "literal_string \"Dependent transaction result count not match branch prepare transaction count\""
@@ -1993,13 +2036,13 @@
           },
           {
             "constant": true,
-            "id": 2875,
+            "id": 100,
             "mutability": "constant",
             "name": "ERROR_EXPIRED_LOCK",
-            "nameLocation": "1640:18:7",
+            "nameLocation": "1651:18:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1624:70:7",
+            "scope": 107,
+            "src": "1635:70:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2007,10 +2050,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2873,
+              "id": 98,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1624:6:7",
+              "src": "1635:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -2018,14 +2061,14 @@
             },
             "value": {
               "hexValue": "4e6565642052656c656173652045787069726564204c6f636b204572726f72",
-              "id": 2874,
+              "id": 99,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1661:33:7",
+              "src": "1672:33:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_8cf4a3763c1ebda1827f18f599e451525b80ae1c7bba86e4274c675549512526",
                 "typeString": "literal_string \"Need Release Expired Lock Error\""
@@ -2036,13 +2079,13 @@
           },
           {
             "constant": true,
-            "id": 2878,
+            "id": 103,
             "mutability": "constant",
             "name": "ERROR_NO_LOCK",
-            "nameLocation": "1716:13:7",
+            "nameLocation": "1727:13:1",
             "nodeType": "VariableDeclaration",
-            "scope": 2879,
-            "src": "1700:41:7",
+            "scope": 107,
+            "src": "1711:41:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2050,10 +2093,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2876,
+              "id": 101,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "1700:6:7",
+              "src": "1711:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -2061,14 +2104,14 @@
             },
             "value": {
               "hexValue": "4e6f204c6f636b",
-              "id": 2877,
+              "id": 102,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1732:9:7",
+              "src": "1743:9:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_df8f28a14f408df9274c237bac3272d17a48e4c3feea0d509efc577164ba5f8c",
                 "typeString": "literal_string \"No Lock\""
@@ -2076,22 +2119,73 @@
               "value": "No Lock"
             },
             "visibility": "internal"
+          },
+          {
+            "constant": true,
+            "id": 106,
+            "mutability": "constant",
+            "name": "COLON",
+            "nameLocation": "1779:5:1",
+            "nodeType": "VariableDeclaration",
+            "scope": 107,
+            "src": "1763:27:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_memory_ptr",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 104,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "1763:6:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "value": {
+              "hexValue": "3a",
+              "id": 105,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "string",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1787:3:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_stringliteral_96d280011b274d9410ea6c6fc28e2bb076b01d2fac329c49c4b29a719ec4650c",
+                "typeString": "literal_string \":\""
+              },
+              "value": ":"
+            },
+            "visibility": "internal"
           }
         ],
-        "scope": 2880,
-        "src": "69:1676:7",
+        "scope": 108,
+        "src": "69:1724:1",
         "usedErrors": []
       }
     ],
-    "src": "36:1709:7"
+    "src": "36:1757:1"
   },
   "compiler": {
     "name": "solc",
     "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
   },
-  "networks": {},
-  "schemaVersion": "3.3.3",
-  "updatedAt": "2021-11-06T19:42:59.617Z",
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x6a65d51162c5041Ba46A9cE01860A778DAf66cdB",
+      "transactionHash": "0x88fafbbbb350bc0ede582983a6f4b13a303b214a0a6f71f34ec21a09c50d17a6"
+    }
+  },
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-11-08T20:50:20.849Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},

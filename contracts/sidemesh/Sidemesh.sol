@@ -1,19 +1,23 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.7.0 <0.9.0;
 
-import "../lib/Lib.sol";
+import "../lib/Utils.sol";
+import "../lib/Constants.sol";
 
-import "../util/Structs.sol";
-import "../util/Modifiers.sol";
-import "../util/Constants.sol";
+interface ISidemesh{
+    function getNetwork()external view returns(string memory);
+}
 
-contract Sidemesh is Modifiers, Structs, Constants {
+contract Sidemesh is ISidemesh {
 
     string network;
 
-    function getNetwork()
-        internal view
-        checkEmpty(network, ERROR_NETWORK) returns(string memory){
+    constructor(string memory _network){
+        network = _network;
+    }
+
+    function getNetwork()external view returns(string memory){
+            require(Utils.isEmpty(network), Constants.ERROR_NETWORK);
             return network;
     }
 

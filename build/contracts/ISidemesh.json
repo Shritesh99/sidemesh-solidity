@@ -1,0 +1,1299 @@
+{
+  "contractName": "ISidemesh",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getNetwork",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getNetwork\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/sidemesh/Sidemesh.sol\":\"ISidemesh\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/lib/Constants.sol\":{\"keccak256\":\"0x39d578a0be02e2651db6e9fabed55c70c4eff6b82f14378077abb538cade620f\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://5ae6bba23c923d7e0d63f2522b667df913dd3b289eb4f5e995423ec91ddf5453\",\"dweb:/ipfs/QmUjLHaGgrVxbAqcDfwiTGJSjRqfwc3cygNzUsDT9PquLG\"]},\"project:/contracts/lib/Utils.sol\":{\"keccak256\":\"0xe3b854a4f60676464dbea16e4b1359f5361c60851d649ba800943f63562393a3\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://bac24023e8276e08fd3c3d1d255ac5ae89a54955000f7f3d0a9c3ccf6b3d71e7\",\"dweb:/ipfs/QmTY33MpEeY5ecmuVVRs4UV4JWjoCArWqbxK1QV7xPxRch\"]},\"project:/contracts/sidemesh/Sidemesh.sol\":{\"keccak256\":\"0x71101517f6ec2f2969cf4bdac3132ea8ed0cf91c92fcace7dd3e568bd818cad6\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://4317da4738781d20c93492f88431d5b04faa406bde48bb8f6042c924881f3f62\",\"dweb:/ipfs/QmNfTkiA4L4XKfvNc7ahs6WTaa2ZbNYn1Cb2Y5xKiMN1wq\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity >=0.7.0 <0.9.0;\n\nimport \"../lib/Utils.sol\";\nimport \"../lib/Constants.sol\";\n\ninterface ISidemesh{\n    function getNetwork()external view returns(string memory);\n}\n\ncontract Sidemesh is ISidemesh {\n\n    string network;\n\n    constructor(string memory _network){\n        network = _network;\n    }\n\n    function getNetwork()external view returns(string memory){\n            require(Utils.isEmpty(network), Constants.ERROR_NETWORK);\n            return network;\n    }\n\n    function setNetwork(string memory networkC)public{\n        network = networkC;\n    }\n\n\n}",
+  "sourcePath": "/home/rxshri99/WebProjects/sidemesh-solidity/contracts/sidemesh/Sidemesh.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/sidemesh/Sidemesh.sol",
+    "exportedSymbols": {
+      "Constants": [
+        107
+      ],
+      "ISidemesh": [
+        2018
+      ],
+      "Sidemesh": [
+        2060
+      ],
+      "Utils": [
+        799
+      ]
+    },
+    "id": 2061,
+    "license": "GPL-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2010,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.7",
+          ".0",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "36:31:8"
+      },
+      {
+        "absolutePath": "project:/contracts/lib/Utils.sol",
+        "file": "../lib/Utils.sol",
+        "id": 2011,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 2061,
+        "sourceUnit": 800,
+        "src": "69:26:8",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/lib/Constants.sol",
+        "file": "../lib/Constants.sol",
+        "id": 2012,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 2061,
+        "sourceUnit": 108,
+        "src": "96:30:8",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ISidemesh",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 2018,
+        "linearizedBaseContracts": [
+          2018
+        ],
+        "name": "ISidemesh",
+        "nameLocation": "138:9:8",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "07e4b7e9",
+            "id": 2017,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getNetwork",
+            "nameLocation": "162:10:8",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2013,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "172:2:8"
+            },
+            "returnParameters": {
+              "id": 2016,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2015,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2017,
+                  "src": "196:13:8",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2014,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "196:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "195:15:8"
+            },
+            "scope": 2018,
+            "src": "153:58:8",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2061,
+        "src": "128:85:8",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 2019,
+              "name": "ISidemesh",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 2018,
+              "src": "236:9:8"
+            },
+            "id": 2020,
+            "nodeType": "InheritanceSpecifier",
+            "src": "236:9:8"
+          }
+        ],
+        "canonicalName": "Sidemesh",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 2060,
+        "linearizedBaseContracts": [
+          2060,
+          2018
+        ],
+        "name": "Sidemesh",
+        "nameLocation": "224:8:8",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 2022,
+            "mutability": "mutable",
+            "name": "network",
+            "nameLocation": "260:7:8",
+            "nodeType": "VariableDeclaration",
+            "scope": 2060,
+            "src": "253:14:8",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_storage",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 2021,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "253:6:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 2031,
+              "nodeType": "Block",
+              "src": "309:35:8",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 2029,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 2027,
+                      "name": "network",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2022,
+                      "src": "319:7:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 2028,
+                      "name": "_network",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2024,
+                      "src": "329:8:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "319:18:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 2030,
+                  "nodeType": "ExpressionStatement",
+                  "src": "319:18:8"
+                }
+              ]
+            },
+            "id": 2032,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2025,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2024,
+                  "mutability": "mutable",
+                  "name": "_network",
+                  "nameLocation": "300:8:8",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2032,
+                  "src": "286:22:8",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2023,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "286:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "285:24:8"
+            },
+            "returnParameters": {
+              "id": 2026,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "309:0:8"
+            },
+            "scope": 2060,
+            "src": "274:70:8",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "baseFunctions": [
+              2017
+            ],
+            "body": {
+              "id": 2048,
+              "nodeType": "Block",
+              "src": "407:105:8",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "id": 2040,
+                            "name": "network",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2022,
+                            "src": "443:7:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_storage",
+                              "typeString": "string storage ref"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_string_storage",
+                              "typeString": "string storage ref"
+                            }
+                          ],
+                          "expression": {
+                            "id": 2038,
+                            "name": "Utils",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 799,
+                            "src": "429:5:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_contract$_Utils_$799_$",
+                              "typeString": "type(library Utils)"
+                            }
+                          },
+                          "id": 2039,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "isEmpty",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 741,
+                          "src": "429:13:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_pure$_t_string_memory_ptr_$returns$_t_bool_$",
+                            "typeString": "function (string memory) pure returns (bool)"
+                          }
+                        },
+                        "id": 2041,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "429:22:8",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "expression": {
+                          "id": 2042,
+                          "name": "Constants",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 107,
+                          "src": "453:9:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_Constants_$107_$",
+                            "typeString": "type(library Constants)"
+                          }
+                        },
+                        "id": 2043,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "ERROR_NETWORK",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 49,
+                        "src": "453:23:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      ],
+                      "id": 2037,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "421:7:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2044,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "421:56:8",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2045,
+                  "nodeType": "ExpressionStatement",
+                  "src": "421:56:8"
+                },
+                {
+                  "expression": {
+                    "id": 2046,
+                    "name": "network",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 2022,
+                    "src": "498:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 2036,
+                  "id": 2047,
+                  "nodeType": "Return",
+                  "src": "491:14:8"
+                }
+              ]
+            },
+            "functionSelector": "07e4b7e9",
+            "id": 2049,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getNetwork",
+            "nameLocation": "359:10:8",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2033,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "369:2:8"
+            },
+            "returnParameters": {
+              "id": 2036,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2035,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2049,
+                  "src": "393:13:8",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2034,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "393:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "392:15:8"
+            },
+            "scope": 2060,
+            "src": "350:162:8",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 2058,
+              "nodeType": "Block",
+              "src": "567:35:8",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 2056,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 2054,
+                      "name": "network",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2022,
+                      "src": "577:7:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 2055,
+                      "name": "networkC",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2051,
+                      "src": "587:8:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "577:18:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 2057,
+                  "nodeType": "ExpressionStatement",
+                  "src": "577:18:8"
+                }
+              ]
+            },
+            "functionSelector": "818edaec",
+            "id": 2059,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setNetwork",
+            "nameLocation": "527:10:8",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2052,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2051,
+                  "mutability": "mutable",
+                  "name": "networkC",
+                  "nameLocation": "552:8:8",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2059,
+                  "src": "538:22:8",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2050,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "538:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "537:24:8"
+            },
+            "returnParameters": {
+              "id": 2053,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "567:0:8"
+            },
+            "scope": 2060,
+            "src": "518:84:8",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 2061,
+        "src": "215:391:8",
+        "usedErrors": []
+      }
+    ],
+    "src": "36:570:8"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/sidemesh/Sidemesh.sol",
+    "exportedSymbols": {
+      "Constants": [
+        107
+      ],
+      "ISidemesh": [
+        2018
+      ],
+      "Sidemesh": [
+        2060
+      ],
+      "Utils": [
+        799
+      ]
+    },
+    "id": 2061,
+    "license": "GPL-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2010,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.7",
+          ".0",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "36:31:8"
+      },
+      {
+        "absolutePath": "project:/contracts/lib/Utils.sol",
+        "file": "../lib/Utils.sol",
+        "id": 2011,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 2061,
+        "sourceUnit": 800,
+        "src": "69:26:8",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/lib/Constants.sol",
+        "file": "../lib/Constants.sol",
+        "id": 2012,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 2061,
+        "sourceUnit": 108,
+        "src": "96:30:8",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ISidemesh",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 2018,
+        "linearizedBaseContracts": [
+          2018
+        ],
+        "name": "ISidemesh",
+        "nameLocation": "138:9:8",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "07e4b7e9",
+            "id": 2017,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getNetwork",
+            "nameLocation": "162:10:8",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2013,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "172:2:8"
+            },
+            "returnParameters": {
+              "id": 2016,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2015,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2017,
+                  "src": "196:13:8",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2014,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "196:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "195:15:8"
+            },
+            "scope": 2018,
+            "src": "153:58:8",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2061,
+        "src": "128:85:8",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 2019,
+              "name": "ISidemesh",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 2018,
+              "src": "236:9:8"
+            },
+            "id": 2020,
+            "nodeType": "InheritanceSpecifier",
+            "src": "236:9:8"
+          }
+        ],
+        "canonicalName": "Sidemesh",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 2060,
+        "linearizedBaseContracts": [
+          2060,
+          2018
+        ],
+        "name": "Sidemesh",
+        "nameLocation": "224:8:8",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 2022,
+            "mutability": "mutable",
+            "name": "network",
+            "nameLocation": "260:7:8",
+            "nodeType": "VariableDeclaration",
+            "scope": 2060,
+            "src": "253:14:8",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_storage",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 2021,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "253:6:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 2031,
+              "nodeType": "Block",
+              "src": "309:35:8",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 2029,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 2027,
+                      "name": "network",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2022,
+                      "src": "319:7:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 2028,
+                      "name": "_network",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2024,
+                      "src": "329:8:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "319:18:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 2030,
+                  "nodeType": "ExpressionStatement",
+                  "src": "319:18:8"
+                }
+              ]
+            },
+            "id": 2032,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2025,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2024,
+                  "mutability": "mutable",
+                  "name": "_network",
+                  "nameLocation": "300:8:8",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2032,
+                  "src": "286:22:8",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2023,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "286:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "285:24:8"
+            },
+            "returnParameters": {
+              "id": 2026,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "309:0:8"
+            },
+            "scope": 2060,
+            "src": "274:70:8",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "baseFunctions": [
+              2017
+            ],
+            "body": {
+              "id": 2048,
+              "nodeType": "Block",
+              "src": "407:105:8",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "id": 2040,
+                            "name": "network",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2022,
+                            "src": "443:7:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_string_storage",
+                              "typeString": "string storage ref"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_string_storage",
+                              "typeString": "string storage ref"
+                            }
+                          ],
+                          "expression": {
+                            "id": 2038,
+                            "name": "Utils",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 799,
+                            "src": "429:5:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_contract$_Utils_$799_$",
+                              "typeString": "type(library Utils)"
+                            }
+                          },
+                          "id": 2039,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "isEmpty",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 741,
+                          "src": "429:13:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_pure$_t_string_memory_ptr_$returns$_t_bool_$",
+                            "typeString": "function (string memory) pure returns (bool)"
+                          }
+                        },
+                        "id": 2041,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "429:22:8",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "expression": {
+                          "id": 2042,
+                          "name": "Constants",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 107,
+                          "src": "453:9:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_Constants_$107_$",
+                            "typeString": "type(library Constants)"
+                          }
+                        },
+                        "id": 2043,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "ERROR_NETWORK",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 49,
+                        "src": "453:23:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      ],
+                      "id": 2037,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "421:7:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2044,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "421:56:8",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2045,
+                  "nodeType": "ExpressionStatement",
+                  "src": "421:56:8"
+                },
+                {
+                  "expression": {
+                    "id": 2046,
+                    "name": "network",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 2022,
+                    "src": "498:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 2036,
+                  "id": 2047,
+                  "nodeType": "Return",
+                  "src": "491:14:8"
+                }
+              ]
+            },
+            "functionSelector": "07e4b7e9",
+            "id": 2049,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getNetwork",
+            "nameLocation": "359:10:8",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2033,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "369:2:8"
+            },
+            "returnParameters": {
+              "id": 2036,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2035,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2049,
+                  "src": "393:13:8",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2034,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "393:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "392:15:8"
+            },
+            "scope": 2060,
+            "src": "350:162:8",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 2058,
+              "nodeType": "Block",
+              "src": "567:35:8",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 2056,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 2054,
+                      "name": "network",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2022,
+                      "src": "577:7:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 2055,
+                      "name": "networkC",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2051,
+                      "src": "587:8:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "577:18:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 2057,
+                  "nodeType": "ExpressionStatement",
+                  "src": "577:18:8"
+                }
+              ]
+            },
+            "functionSelector": "818edaec",
+            "id": 2059,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setNetwork",
+            "nameLocation": "527:10:8",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2052,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2051,
+                  "mutability": "mutable",
+                  "name": "networkC",
+                  "nameLocation": "552:8:8",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2059,
+                  "src": "538:22:8",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2050,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "538:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "537:24:8"
+            },
+            "returnParameters": {
+              "id": 2053,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "567:0:8"
+            },
+            "scope": 2060,
+            "src": "518:84:8",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 2061,
+        "src": "215:391:8",
+        "usedErrors": []
+      }
+    ],
+    "src": "36:570:8"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-11-08T20:10:01.467Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

@@ -1,47 +1,93 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.7.0 <0.9.0;
 
-import "../sidemesh/Sidemesh.sol";
+import "../lib/Utils.sol";
+import "../lib/Constants.sol";
+import "../lib/Enums.sol";
+import "../lib/Structs.sol";
 
+import "../sidemesh/Sidemesh.sol";
 import "../resource/Verifier.sol";
 import "../resource/Register.sol";
 import "../lock/LockManager.sol";
 
-contract GlobalTransactionManager is Sidemesh {
-    
-    Verifier verifier;
-    Register registry;
-    LockManager lockManager;
-
-    NetworkTransaction[] networkPrepareTxs;
-    NetworkTransaction[] networkConfirmTxs;
-
-    mapping(bytes32 => GlobalTransactionStatus) globalTransactionStatuses;
-    mapping(bytes32 => GlobalTransaction) globalTransactions;
-
-    constructor (
-        address _registery,
-        address _verifier,
-        address _lockManager){
-            registry = Register(_registery);
-            verifier = Verifier(_verifier);
-            lockManager = LockManager(_lockManager);
-        }
-
+interface IGlobalTransactionManager{
     function getDataForCheckTimeout(
         string memory network,
         uint chain,
         address sender)
-        external view returns(bool, uint, uint){
-            bytes32 xidKey = Lib.hash(abi.encodePacked(PREFIX, network, chain, sender));
-            
-            require(globalTransactionStatuses[xidKey].isValid, ERROR_NO_PRIMARY_TX);
-            
-            return(
-                globalTransactionStatuses[xidKey].isValid,
-                uint(globalTransactionStatuses[xidKey].status),
-                globalTransactions[xidKey].ttlTime
-                );
+        external view returns(bool, uint, uint);
+        
+    function startGlobalTransaction(
+        uint ttlHeight,
+        uint ttlTime)
+        external;
+        
+    function registerNetworkTransaction(
+        string memory network,
+        uint chain,
+        address contractC, 
+        string memory functionC, 
+        string[] memory args)
+        external;
+
+    function preparePrimaryTransaction(
+        string memory functionC) 
+        external;
+
+    function confirmPrimaryTransaction(
+            address primaryPrepareTxSender,
+            string[][] memory networkTxRes
+        )external;
+
+    function startNetworkTransaction(
+        string memory primaryNetwork,
+        uint primaryChain,
+        string memory primaryTxID,
+        string memory primaryTxProof)
+        external;
+
+    function prepareNetworkTransaction(
+        string memory primaryNetwork,
+        uint primaryChain,
+        address primaryTxSender,
+        address globalTxQueryContract,
+        string memory globalTxQueryFunc,
+        string memory functionC)
+        external;
+    
+    function confirmNetworkTransaction(
+        address networkPrepareTxSender,
+        uint globalTxStatus,
+        string memory primaryNetwork,
+        uint primaryChain,
+        address primaryConfirmTxSender,
+        string memory primaryConfirmTxProof)
+        external;
+}
+
+contract GlobalTransactionManager is IGlobalTransactionManager{
+    
+    ISidemesh sidemesh;
+    IVerifier verifier;
+    IRegister registry;
+    ILockManagerGlobalTransaction lockManager;
+
+    Structs.NetworkTransaction[] networkPrepareTxs;
+    Structs.NetworkTransaction[] networkConfirmTxs;
+
+    mapping(bytes32 => Structs.GlobalTransactionStatus) globalTransactionStatuses;
+    mapping(bytes32 => Structs.GlobalTransaction) globalTransactions;
+
+    constructor (
+        address _sidemesh,
+        address _registery,
+        address _verifier,
+        address _lockManager){
+            sidemesh = ISidemesh(_sidemesh);
+            registry = IRegister(_registery);
+            verifier = IVerifier(_verifier);
+            lockManager = ILockManagerGlobalTransaction(_lockManager);
         }
     
     function getNetworkTxs(bytes32 xidKey, bool porc)internal{
@@ -56,17 +102,33 @@ contract GlobalTransactionManager is Sidemesh {
         }
     }
 
+    function getDataForCheckTimeout(
+        string memory network,
+        uint chain,
+        address sender)
+        external view returns(bool, uint, uint){
+            bytes32 xidKey = Utils.hash(abi.encodePacked(Constants.PREFIX, network, chain, sender));
+            
+            require(globalTransactionStatuses[xidKey].isValid, Constants.ERROR_NO_PRIMARY_TX);
+            
+            return(
+                globalTransactionStatuses[xidKey].isValid,
+                uint(globalTransactionStatuses[xidKey].status),
+                globalTransactions[xidKey].ttlTime
+                );
+        }
+
     function startGlobalTransaction(
         uint ttlHeight,
         uint ttlTime)
-        external 
-        checkPositive(ttlHeight, ERROR_TTLHEIGHT)
-        checkNonZero(ttlTime, ERROR_TTLTIME){
-            string memory network = getNetwork();
-            bytes32 xid = Lib.hash(abi.encodePacked(PREFIX, network, block.chainid, msg.sender));
+        external{
+            require(ttlHeight >= 0, Constants.ERROR_TTLHEIGHT);
+            require(ttlTime != 0, Constants.ERROR_TTLTIME);
+            string memory network = sidemesh.getNetwork();
+            bytes32 xid = Utils.hash(abi.encodePacked(Constants.PREFIX, network, block.chainid, msg.sender));
 
-            GlobalTransaction storage globalTx = globalTransactions[xid];
-            globalTx.primaryPrepareTxId = TransactionID(URI(network, block.chainid), msg.sender);
+            Structs.GlobalTransaction storage globalTx = globalTransactions[xid];
+            globalTx.primaryPrepareTxId = Structs.TransactionID(Structs.URI(network, block.chainid), msg.sender);
             globalTx.networkPrepareTxsLength = 0;
             globalTx.networkConfirmTxsLength = 0;
             globalTx.ttlHeight = ttlHeight;
@@ -81,12 +143,12 @@ contract GlobalTransactionManager is Sidemesh {
         string memory functionC, 
         string[] memory args)
         external{
-            string memory primaryNetwork = getNetwork();
-            bytes32 xid = Lib.hash(abi.encodePacked(PREFIX, primaryNetwork, block.chainid, msg.sender));
+            string memory primaryNetwork = sidemesh.getNetwork();
+            bytes32 xid = Utils.hash(abi.encodePacked(Constants.PREFIX, primaryNetwork, block.chainid, msg.sender));
 
-            NetworkTransaction memory txId;
-            txId.txId = TransactionID(URI(network, chain), msg.sender);
-            txId.invocation = Invocation(contractC, functionC, args);
+            Structs.NetworkTransaction memory txId;
+            txId.txId = Structs.TransactionID(Structs.URI(network, chain), msg.sender);
+            txId.invocation = Structs.Invocation(contractC, functionC, args);
 
             globalTransactions[xid].networkPrepareTxs[globalTransactions[xid].networkPrepareTxsLength] = txId;
             globalTransactions[xid].networkPrepareTxsLength++;
@@ -95,40 +157,40 @@ contract GlobalTransactionManager is Sidemesh {
     function preparePrimaryTransaction(
         string memory functionC) 
         external{
-            string memory network = getNetwork();
-            bytes32 xidKey = Lib.hash(abi.encodePacked(PREFIX, network, block.chainid, msg.sender));
+            string memory network = sidemesh.getNetwork();
+            bytes32 xidKey = Utils.hash(abi.encodePacked(Constants.PREFIX, network, block.chainid, msg.sender));
             
-            Invocation memory invocation;
+            Structs.Invocation memory invocation;
             invocation.functionC = functionC;
             invocation.args = new string[](1);
-            invocation.args[0] = Lib.toString(abi.encodePacked(msg.sender));
+            invocation.args[0] = Utils.toString(abi.encodePacked(msg.sender));
             
-            NetworkTransaction memory txId;
-            txId.txId = TransactionID(URI(network, block.chainid), msg.sender);
+            Structs.NetworkTransaction memory txId;
+            txId.txId = Structs.TransactionID(Structs.URI(network, block.chainid), msg.sender);
             txId.invocation = invocation;
 
             globalTransactions[xidKey].primaryConfirmTx = txId;
 
-            GlobalTransactionStatus memory globalTxStatus;
+            Structs.GlobalTransactionStatus memory globalTxStatus;
             globalTxStatus.primaryPrepareTxId = globalTransactions[xidKey].primaryPrepareTxId;
-            globalTxStatus.status = GlobalTransactionStatusType.PRIMARY_TRANSACTION_PREPARED;
+            globalTxStatus.status = Enums.GlobalTransactionStatusType.PRIMARY_TRANSACTION_PREPARED;
             globalTxStatus.isValid = true;
             
             globalTransactionStatuses[xidKey] = globalTxStatus;
 
             if(lockManager.getWriteKeySetLength(xidKey) > 0){
                 for(uint i=0; i<lockManager.getWriteKeySetLength(xidKey); i++){
-                    lockManager.putWSet(xidKey, lockManager.writeKeySet(xidKey, i));
+                    lockManager.putWSet(xidKey, lockManager.getWriteKeySet(xidKey, i));
                 }
             }
 
-            Invocation memory queryGlobalTxInvocation;
-            queryGlobalTxInvocation.functionC = QUERYGLOBALTXSTATUS;
+            Structs.Invocation memory queryGlobalTxInvocation;
+            queryGlobalTxInvocation.functionC = Constants.QUERYGLOBALTXSTATUS;
             
             getNetworkTxs(xidKey, true);
             getNetworkTxs(xidKey, false);
 
-            emit PrimaryTransactionPreparedEvent(
+            emit Structs.PrimaryTransactionPreparedEvent(
                 globalTransactions[xidKey].primaryPrepareTxId,
                 globalTransactions[xidKey].primaryConfirmTx,
                 queryGlobalTxInvocation,
@@ -144,79 +206,77 @@ contract GlobalTransactionManager is Sidemesh {
             address primaryPrepareTxSender,
             string[][] memory networkTxRes
         )external{
-            string memory network = getNetwork();
-            bytes32 xidKey = Lib.hash(abi.encodePacked(PREFIX, network, block.chainid, primaryPrepareTxSender));
+            string memory network = sidemesh.getNetwork();
+            bytes32 xidKey = Utils.hash(abi.encodePacked(Constants.PREFIX, network, block.chainid, primaryPrepareTxSender));
 
-            require(globalTransactionStatuses[xidKey].isValid, ERROR_NO_PRIMARY_TX);
+            require(globalTransactionStatuses[xidKey].isValid, Constants.ERROR_NO_PRIMARY_TX);
 
             require(
-                globalTransactionStatuses[xidKey].status == GlobalTransactionStatusType.PRIMARY_TRANSACTION_PREPARED,
-                ERROR_DUPLICATE_TX_STATUS);
+                globalTransactionStatuses[xidKey].status == Enums.GlobalTransactionStatusType.PRIMARY_TRANSACTION_PREPARED,
+                Constants.ERROR_DUPLICATE_TX_STATUS);
 
-            require(globalTransactions[xidKey].isValid, ERROR_NO_GLOBAL_TX);
+            require(globalTransactions[xidKey].isValid, Constants.ERROR_NO_GLOBAL_TX);
 
             require(
                 globalTransactions[xidKey].networkPrepareTxsLength == networkTxRes.length,
-                ERROR_DEPENDENT_TX
+                Constants.ERROR_DEPENDENT_TX
             );
 
             uint numVerified = 0;
             for(uint i=0;i<networkTxRes.length;i++){
-                globalTransactions[xidKey].networkPrepareTxs[i].txId.sender = Lib.toAddress(networkTxRes[i][2]);
+                globalTransactions[xidKey].networkPrepareTxs[i].txId.sender = Utils.toAddress(networkTxRes[i][2]);
                 globalTransactions[xidKey].networkPrepareTxs[i].proof = networkTxRes[i][3];
 
-                (address contractC, string memory functionC) = verifier.resolve(networkTxRes[i][0], Lib.toUint(networkTxRes[i][1]));
-                require(!Lib.checkAddress(contractC), ERROR_CONTRACT);
-                require(!Lib.isEmpty(functionC), ERROR_FUNCTION);
+                (address contractC, string memory functionC) = verifier.resolve(networkTxRes[i][0], Utils.toUint(networkTxRes[i][1]));
+                require(!Utils.checkAddress(contractC), Constants.ERROR_CONTRACT);
+                require(!Utils.isEmpty(functionC), Constants.ERROR_FUNCTION);
 
-                if(!Lib.isEmpty(networkTxRes[i][3])){
+                if(!Utils.isEmpty(networkTxRes[i][3])){
                     (bool success,) = contractC.call(abi.encodeWithSignature(functionC, networkTxRes[i][2], networkTxRes[i][3]));
-                    require(success, ERROR_FAILED);
+                    require(success, Constants.ERROR_FAILED);
                     numVerified++;
                 }
             }
             if (numVerified == globalTransactions[xidKey].networkPrepareTxsLength) {
-                globalTransactionStatuses[xidKey].status = GlobalTransactionStatusType.PRIMARY_TRANSACTION_COMMITTED;
+                globalTransactionStatuses[xidKey].status = Enums.GlobalTransactionStatusType.PRIMARY_TRANSACTION_COMMITTED;
             } else {
-                globalTransactionStatuses[xidKey].status = GlobalTransactionStatusType.PRIMARY_TRANSACTION_CANCELED;
+                globalTransactionStatuses[xidKey].status = Enums.GlobalTransactionStatusType.PRIMARY_TRANSACTION_CANCELED;
             }
             
             
             if(lockManager.getWSetLength(xidKey) > 0){
                 for(uint i=0; i<lockManager.getWSetLength(xidKey); i++){
-                    bytes32 hash = Lib.hash(abi.encodePacked(lockManager.wSet(xidKey, i)));
+                    bytes32 hash = Utils.hash(abi.encodePacked(lockManager.getWSet(xidKey, i)));
                     
-                    (,bytes memory prevState,
-                    bytes memory updatingState,
-                    bool isValid) = lockManager.locks(hash);
+                    Structs.Lock memory lock = lockManager.getLock(hash);
                     
-                    require(isValid, ERROR_NO_LOCK);
+                    require(lock.isValid, Constants.ERROR_NO_LOCK);
                     
-                    if(globalTransactionStatuses[xidKey].status == GlobalTransactionStatusType.PRIMARY_TRANSACTION_COMMITTED){
-                        lockManager.putLock(hash, lockDeserializer(updatingState));    
-                    }else if(globalTransactionStatuses[xidKey].status == GlobalTransactionStatusType.PRIMARY_TRANSACTION_CANCELED){
-                        lockManager.putLock(hash, lockDeserializer(prevState)); 
+                    if(globalTransactionStatuses[xidKey].status == Enums.GlobalTransactionStatusType.PRIMARY_TRANSACTION_COMMITTED){
+                        lockManager.putLock(hash, lockManager.lockDeserializer(lock.updatingState));    
+                    }else if(globalTransactionStatuses[xidKey].status == Enums.GlobalTransactionStatusType.PRIMARY_TRANSACTION_CANCELED){
+                        lockManager.putLock(hash, lockManager.lockDeserializer(lock.prevState)); 
                     }
                 }
             }
             
             for(uint i=0; i<globalTransactions[xidKey].networkPrepareTxsLength;i++){
-                NetworkTransaction memory networkConfirmTx;
-                TransactionID memory txId;
-                txId.uri = URI(
+                Structs.NetworkTransaction memory networkConfirmTx;
+                Structs.TransactionID memory txId;
+                txId.uri = Structs.URI(
                             globalTransactions[xidKey].networkPrepareTxs[i].txId.uri.network,
                             globalTransactions[xidKey].networkPrepareTxs[i].txId.uri.chain);
                 networkConfirmTx.txId = txId;
 
-                Invocation memory invocation;
+                Structs.Invocation memory invocation;
                 invocation.contractC = globalTransactions[xidKey].networkPrepareTxs[i].invocation.contractC;
                 invocation.functionC = globalTransactions[xidKey].networkPrepareTxs[i].invocation.functionC;
                 invocation.args = new string[](5);
-                invocation.args[0] = Lib.toString(abi.encodePacked(globalTransactions[xidKey].networkPrepareTxs[i].txId.sender));
-                invocation.args[1] = Lib.toString(abi.encodePacked(uint(globalTransactionStatuses[xidKey].status)));
+                invocation.args[0] = Utils.toString(abi.encodePacked(globalTransactions[xidKey].networkPrepareTxs[i].txId.sender));
+                invocation.args[1] = Utils.toString(abi.encodePacked(uint(globalTransactionStatuses[xidKey].status)));
                 invocation.args[2] = network;
-                invocation.args[3] = Lib.toString(abi.encodePacked(block.chainid));
-                invocation.args[4] = Lib.toString(abi.encodePacked(msg.sender));
+                invocation.args[3] = Utils.toString(abi.encodePacked(block.chainid));
+                invocation.args[4] = Utils.toString(abi.encodePacked(msg.sender));
 
                 networkConfirmTx.invocation = invocation;
 
@@ -226,8 +286,8 @@ contract GlobalTransactionManager is Sidemesh {
 
             getNetworkTxs(xidKey, false);
 
-            emit PrimaryTransactionConfirmedEvent(
-                TransactionID(URI(network, block.chainid), msg.sender),
+            emit Structs.PrimaryTransactionConfirmedEvent(
+                Structs.TransactionID(Structs.URI(network, block.chainid), msg.sender),
                 networkConfirmTxs
             );
             delete networkConfirmTxs;
@@ -238,14 +298,14 @@ contract GlobalTransactionManager is Sidemesh {
         uint primaryChain,
         string memory primaryTxID,
         string memory primaryTxProof)
-        external
-        checkEmpty(primaryTxProof, ERROR_PRIMARYTXPROOF){
+        external{
+            require(!Utils.isEmpty(primaryTxProof), Constants.ERROR_PRIMARYTXPROOF);
             (address contractC, string memory functionC) = verifier.resolve(primaryNetwork, primaryChain);
-            require(!Lib.checkAddress(contractC), ERROR_CONTRACT);
-            require(!Lib.isEmpty(functionC), ERROR_FUNCTION);
+            require(!Utils.checkAddress(contractC), Constants.ERROR_CONTRACT);
+            require(!Utils.isEmpty(functionC), Constants.ERROR_FUNCTION);
 
             (bool success,) = contractC.call(abi.encodeWithSignature(functionC, primaryTxID, primaryTxProof));
-            require(success, ERROR_FAILED);
+            require(success, Constants.ERROR_FAILED);
         }
     
     function prepareNetworkTransaction(
@@ -256,29 +316,29 @@ contract GlobalTransactionManager is Sidemesh {
         string memory globalTxQueryFunc,
         string memory functionC)
         external{
-            string memory network = getNetwork();
+            string memory network = sidemesh.getNetwork();
             
-            TransactionID memory globalTxId = TransactionID(URI(primaryNetwork, primaryChain), primaryTxSender);
-            Invocation memory globalTxQuery = Invocation(globalTxQueryContract, globalTxQueryFunc, new string[](1));
+            Structs.TransactionID memory globalTxId = Structs.TransactionID(Structs.URI(primaryNetwork, primaryChain), primaryTxSender);
+            Structs.Invocation memory globalTxQuery = Structs.Invocation(globalTxQueryContract, globalTxQueryFunc, new string[](1));
             globalTxQuery.args[0] = string(abi.encodePacked(primaryTxSender));
 
-            bytes32 bidKey = Lib.hash(abi.encodePacked(PREFIX, network, block.chainid, msg.sender));
+            bytes32 bidKey = Utils.hash(abi.encodePacked(Constants.PREFIX, network, block.chainid, msg.sender));
             if(lockManager.getWriteKeySetLength(bidKey) > 0){
                 for(uint i=0; i<lockManager.getWriteKeySetLength(bidKey); i++){
-                    lockManager.putWSet(bidKey, lockManager.writeKeySet(bidKey, i));
+                    lockManager.putWSet(bidKey, lockManager.getWriteKeySet(bidKey, i));
                 }
             }
             
-            Invocation memory invocation;
+            Structs.Invocation memory invocation;
             invocation.functionC = functionC;
             invocation.args = new string[](1);
-            invocation.args[0] = Lib.toString(abi.encodePacked(msg.sender));
+            invocation.args[0] = Utils.toString(abi.encodePacked(msg.sender));
             
-            NetworkTransaction memory networkConfirmTx;
-            networkConfirmTx.txId = TransactionID(URI(network, block.chainid), msg.sender);
+            Structs.NetworkTransaction memory networkConfirmTx;
+            networkConfirmTx.txId = Structs.TransactionID(Structs.URI(network, block.chainid), msg.sender);
             networkConfirmTx.invocation = invocation;
 
-            emit NetworkTransactionPreparedEvent(
+            emit Structs.NetworkTransactionPreparedEvent(
                 globalTxId,
                 globalTxQuery,
                 networkConfirmTx
@@ -294,31 +354,29 @@ contract GlobalTransactionManager is Sidemesh {
         string memory primaryConfirmTxProof)
         external{
             (address contractC, string memory functionC) = verifier.resolve(primaryNetwork, primaryChain);
-            require(!Lib.checkAddress(contractC), ERROR_CONTRACT);
-            require(!Lib.isEmpty(functionC), ERROR_FUNCTION);
+            require(!Utils.checkAddress(contractC), Constants.ERROR_CONTRACT);
+            require(!Utils.isEmpty(functionC), Constants.ERROR_FUNCTION);
 
-            require(!Lib.isEmpty(primaryConfirmTxProof), ERROR_NO_PRIMARY_CONFIRM_TX_PROOF);
+            require(!Utils.isEmpty(primaryConfirmTxProof), Constants.ERROR_NO_PRIMARY_CONFIRM_TX_PROOF);
 
             (bool success,) = contractC.call(abi.encodeWithSignature(functionC, primaryConfirmTxSender, primaryConfirmTxProof));
-            require(success, ERROR_NO_PRIMARY_CONFIRM_TX);
+            require(success, Constants.ERROR_NO_PRIMARY_CONFIRM_TX);
 
-            string memory network = getNetwork();
-            bytes32 bidKey = Lib.hash(abi.encodePacked(PREFIX, network, block.chainid, networkPrepareTxSender));
+            string memory network = sidemesh.getNetwork();
+            bytes32 bidKey = Utils.hash(abi.encodePacked(Constants.PREFIX, network, block.chainid, networkPrepareTxSender));
 
             if(lockManager.getWSetLength(bidKey) > 0){
                 for(uint i=0; i<lockManager.getWSetLength(bidKey); i++){
-                    bytes32 hash = Lib.hash(abi.encodePacked(lockManager.wSet(bidKey, i)));
+                    bytes32 hash = Utils.hash(abi.encodePacked(lockManager.getWSet(bidKey, i)));
 
-                    (,bytes memory prevState,
-                    bytes memory updatingState,
-                    bool isValid) = lockManager.locks(hash);
+                    Structs.Lock memory lock = lockManager.getLock(hash);
 
-                    require(isValid, ERROR_NO_LOCK);
+                    require(lock.isValid, Constants.ERROR_NO_LOCK);
                     
-                    if(globalTxStatus == uint(GlobalTransactionStatusType.PRIMARY_TRANSACTION_COMMITTED)){
-                        lockManager.putLock(hash, lockDeserializer(updatingState));    
-                    }else if(globalTxStatus == uint(GlobalTransactionStatusType.PRIMARY_TRANSACTION_CANCELED)){
-                        lockManager.putLock(hash, lockDeserializer(prevState)); 
+                    if(globalTxStatus == uint(Enums.GlobalTransactionStatusType.PRIMARY_TRANSACTION_COMMITTED)){
+                        lockManager.putLock(hash, lockManager.lockDeserializer(lock.updatingState));    
+                    }else if(globalTxStatus == uint(Enums.GlobalTransactionStatusType.PRIMARY_TRANSACTION_CANCELED)){
+                        lockManager.putLock(hash, lockManager.lockDeserializer(lock.prevState)); 
                     }
                 }
             }

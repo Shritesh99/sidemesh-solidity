@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.7.0 <0.9.0;
 
-contract Constants{
+library Constants{
     string constant PREFIX = "SIDE_MESH_";
 
     string constant QUERYGLOBALTXSTATUS = "QueryGlobalTxStatus";
 
-    string constant REG_URI_NOT_FOUND = "[Register] Cant able find uri";
-    string constant VER_URI_NOT_FOUND = "[Verifier] Cant able find uri";
+    string constant ERROR_REG_URI_NOT_FOUND = "[Register] Cant able find uri";
+    string constant ERROR_VER_URI_NOT_FOUND = "[Verifier] Cant able find uri";
     string constant ERROR_NETWORK = "Network is empty";
     string constant ERROR_TTLTIME = "ttlTime at least one should be set";
     string constant ERROR_TTLHEIGHT = "ttlHeight at least one should be set";
@@ -27,5 +27,6 @@ contract Constants{
     string constant ERROR_DEPENDENT_TX = "Dependent transaction result count not match branch prepare transaction count";
     string constant ERROR_EXPIRED_LOCK = "Need Release Expired Lock Error";
     string constant ERROR_NO_LOCK = "No Lock";
-
+    
+    string constant COLON = ":";
 }
