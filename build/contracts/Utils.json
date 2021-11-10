@@ -1,18 +1,18 @@
 {
   "contractName": "Utils",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/lib/Utils.sol\":\"Utils\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/lib/Utils.sol\":{\"keccak256\":\"0xe3b854a4f60676464dbea16e4b1359f5361c60851d649ba800943f63562393a3\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://bac24023e8276e08fd3c3d1d255ac5ae89a54955000f7f3d0a9c3ccf6b3d71e7\",\"dweb:/ipfs/QmTY33MpEeY5ecmuVVRs4UV4JWjoCArWqbxK1QV7xPxRch\"]}},\"version\":1}",
-  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220826ca37f5022886389a0aac8ae1f7b7a203736a18594007636425d077d7cec9564736f6c63430008090033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220826ca37f5022886389a0aac8ae1f7b7a203736a18594007636425d077d7cec9564736f6c63430008090033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Utils.sol\":\"Utils\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Utils.sol\":{\"keccak256\":\"0xe3b854a4f60676464dbea16e4b1359f5361c60851d649ba800943f63562393a3\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://bac24023e8276e08fd3c3d1d255ac5ae89a54955000f7f3d0a9c3ccf6b3d71e7\",\"dweb:/ipfs/QmTY33MpEeY5ecmuVVRs4UV4JWjoCArWqbxK1QV7xPxRch\"]}},\"version\":1}",
+  "bytecode": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220b7f0772afa7c12f2aa70b24f74093529dee60ae08a0426113642dd249f7b2c1764736f6c63430008090033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220b7f0772afa7c12f2aa70b24f74093529dee60ae08a0426113642dd249f7b2c1764736f6c63430008090033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "69:3411:4:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "sourceMap": "69:3411:4:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;69:3411:4;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "69:3411:4:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity >=0.7.0 <0.9.0;\n\nlibrary Utils{\n\n    function hash(bytes memory data)internal pure returns(bytes32){\n        return keccak256(data);\n    }\n    function toString(bytes memory data)internal pure returns(string memory){\n        return string(data);\n    }\n    function toString(bool data)internal pure returns(string memory){\n        if(data) return \"true\";\n        else return \"false\";\n    }\n    function toBytes(string memory data)internal pure returns(bytes memory){\n        return bytes(data);\n    }\n    function toAddress(string memory data)internal pure returns(address){\n        bytes memory tmp = bytes(data);\n        uint160 iaddr = 0;\n        uint160 b1;\n        uint160 b2;\n        for (uint i = 2; i < 2 + 2 * 20; i += 2) {\n            iaddr *= 256;\n            b1 = uint160(uint8(tmp[i]));\n            b2 = uint160(uint8(tmp[i + 1]));\n            if ((b1 >= 97) && (b1 <= 102)) {\n                b1 -= 87;\n            } else if ((b1 >= 65) && (b1 <= 70)) {\n                b1 -= 55;\n            } else if ((b1 >= 48) && (b1 <= 57)) {\n                b1 -= 48;\n            }\n            if ((b2 >= 97) && (b2 <= 102)) {\n                b2 -= 87;\n            } else if ((b2 >= 65) && (b2 <= 70)) {\n                b2 -= 55;\n            } else if ((b2 >= 48) && (b2 <= 57)) {\n                b2 -= 48;\n            }\n            iaddr += (b1 * 16 + b2);\n        }\n        return address(iaddr);\n    }\n    function toUint(string memory s)internal pure returns(uint){\n        bytes memory b = bytes(s);\n        uint i;\n        uint counterBeforeDot;\n        uint counterAfterDot;\n        uint result = 0;\n        uint totNum = b.length;\n        totNum--;\n        bool hasDot = false;\n\n        for (i = 0; i < b.length; i++) {\n            uint c = uint(uint8(b[i]));\n\n            if (c >= 48 && c <= 57) {\n                result = result * 10 + (c - 48);\n                counterBeforeDot ++;\n                totNum--;\n            }\n\n            if(c == 46){\n                hasDot = true;\n                break;\n            }\n        }\n\n        if(hasDot) {\n            for (uint j = counterBeforeDot + 1; j < 18; j++) {\n                uint m = uint(uint8(b[j]));\n\n                if (m >= 48 && m <= 57) {\n                    result = result * 10 + (m - 48);\n                    counterAfterDot ++;\n                    totNum--;\n                }\n\n                if(totNum == 0){\n                    break;\n                }\n            }\n        }\n        if(counterAfterDot < 18){\n            uint addNum = 18 - counterAfterDot;\n            uint multuply = 10 ** addNum;\n            return result = result * multuply;\n        }\n\n        return result;\n    }\n    function equals(string memory a, string memory b)internal pure returns (bool) {\n        return (keccak256(abi.encodePacked((a))) == keccak256(abi.encodePacked((b))));\n    }\n    function isEmpty(string memory a)internal pure returns (bool) {\n        return (keccak256(abi.encodePacked((a))) == keccak256(abi.encodePacked((\"\"))));\n    }\n    function checkBytes(string memory str)internal pure returns(bool){\n        return bytes(str).length != 0;\n    }\n    function checkAddress(address a)internal pure returns(bool){\n        return a == address(a);\n    }\n    function stringToBool(string memory data)internal pure returns(bool){\n        if(keccak256(abi.encodePacked(data)) == keccak256(abi.encodePacked(\"true\")))return true;\n        else return false;\n    }\n}",
-  "sourcePath": "/home/rxshri99/WebProjects/sidemesh-solidity/contracts/lib/Utils.sol",
+  "sourcePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Utils.sol",
   "ast": {
-    "absolutePath": "project:/contracts/lib/Utils.sol",
+    "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Utils.sol",
     "exportedSymbols": {
       "Utils": [
         799
@@ -6794,7 +6794,7 @@
     "src": "36:3444:4"
   },
   "legacyAST": {
-    "absolutePath": "project:/contracts/lib/Utils.sol",
+    "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Utils.sol",
     "exportedSymbols": {
       "Utils": [
         799
@@ -13579,17 +13579,9 @@
     "name": "solc",
     "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
   },
-  "networks": {
-    "5777": {
-      "events": {},
-      "links": {},
-      "address": "0xC658e81277B82655AA31044Ee08Eef260e119782",
-      "transactionHash": "0x8114ba73660049b3bbd6e1ab7033d0f2875f98348feb83967731b3b0690cc334"
-    }
-  },
-  "schemaVersion": "3.4.1",
-  "updatedAt": "2021-11-08T20:50:20.837Z",
-  "networkType": "ethereum",
+  "networks": {},
+  "schemaVersion": "3.3.3",
+  "updatedAt": "2021-11-10T21:57:49.946Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

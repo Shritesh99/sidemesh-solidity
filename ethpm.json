@@ -1,0 +1,9 @@
+{
+	"package_name": "sidemesh-solidity",
+	"version": "0.0.2",
+	"authors": ["Shritesh <shritesh.sj@gmail.com>"],
+	"description": "Solidity component for Sidemesh",
+	"keywords": ["ethereum", "sidemesh", "crossmesh"],
+	"dependencies": {},
+	"license": "MIT"
+}

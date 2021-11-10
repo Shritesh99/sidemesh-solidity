@@ -1,18 +1,18 @@
 {
   "contractName": "Constants",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/lib/Constants.sol\":\"Constants\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/lib/Constants.sol\":{\"keccak256\":\"0x39d578a0be02e2651db6e9fabed55c70c4eff6b82f14378077abb538cade620f\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://5ae6bba23c923d7e0d63f2522b667df913dd3b289eb4f5e995423ec91ddf5453\",\"dweb:/ipfs/QmUjLHaGgrVxbAqcDfwiTGJSjRqfwc3cygNzUsDT9PquLG\"]}},\"version\":1}",
-  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220605e0ba880f0f14379042d51fb979540880e42848d6bb2c23747bbb805c34fe764736f6c63430008090033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220605e0ba880f0f14379042d51fb979540880e42848d6bb2c23747bbb805c34fe764736f6c63430008090033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Constants.sol\":\"Constants\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Constants.sol\":{\"keccak256\":\"0x39d578a0be02e2651db6e9fabed55c70c4eff6b82f14378077abb538cade620f\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://5ae6bba23c923d7e0d63f2522b667df913dd3b289eb4f5e995423ec91ddf5453\",\"dweb:/ipfs/QmUjLHaGgrVxbAqcDfwiTGJSjRqfwc3cygNzUsDT9PquLG\"]}},\"version\":1}",
+  "bytecode": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220262f08b513bc9810f4b84a45d77af9e5688b1c6af24bdfb26879108cd8faf91d64736f6c63430008090033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220262f08b513bc9810f4b84a45d77af9e5688b1c6af24bdfb26879108cd8faf91d64736f6c63430008090033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "69:1724:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "sourceMap": "69:1724:1:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;69:1724:1;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "69:1724:1:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity >=0.7.0 <0.9.0;\n\nlibrary Constants{\n    string constant PREFIX = \"SIDE_MESH_\";\n\n    string constant QUERYGLOBALTXSTATUS = \"QueryGlobalTxStatus\";\n\n    string constant ERROR_REG_URI_NOT_FOUND = \"[Register] Cant able find uri\";\n    string constant ERROR_VER_URI_NOT_FOUND = \"[Verifier] Cant able find uri\";\n    string constant ERROR_NETWORK = \"Network is empty\";\n    string constant ERROR_TTLTIME = \"ttlTime at least one should be set\";\n    string constant ERROR_TTLHEIGHT = \"ttlHeight at least one should be set\";\n    string constant ERROR_PRIMARYTXPROOF = \"Need primary tx proof\";\n    string constant ERROR_CONTRACT = \"Contract is empty\";\n    string constant ERROR_FUNCTION = \"Function is empty\";\n    string constant ERROR_FAILED = \"Primary tx verify failed\";\n    string constant ERROR_SECONDARY_LOCK = \"This is a secondary lock\";\n    string constant ERROR_WRONG_CHAIN = \"Wrong chain\";\n    string constant ERROR_NO_PRIMARY_TX = \"Not found primary prepare tx status\";\n    string constant ERROR_NO_PRIMARY_CONFIRM_TX = \"Primary confirm tx verify failed\";\n    string constant ERROR_NO_PRIMARY_CONFIRM_TX_PROOF = \"Primary confirm tx proof cannot empty\";\n    string constant ERROR_NO_GLOBAL_TX = \"Not found global tx\";\n    string constant ERROR_INVALID_TX_STATUS = \"Invalid tx status it should not have lock\";\n    string constant ERROR_DUPLICATE_TX_STATUS = \"Duplicate confirm global transaction request\";\n    string constant ERROR_INVALID_TIME = \"Invalid Time\";\n    string constant ERROR_DEPENDENT_TX = \"Dependent transaction result count not match branch prepare transaction count\";\n    string constant ERROR_EXPIRED_LOCK = \"Need Release Expired Lock Error\";\n    string constant ERROR_NO_LOCK = \"No Lock\";\n    \n    string constant COLON = \":\";\n}",
-  "sourcePath": "/home/rxshri99/WebProjects/sidemesh-solidity/contracts/lib/Constants.sol",
+  "sourcePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Constants.sol",
   "ast": {
-    "absolutePath": "project:/contracts/lib/Constants.sol",
+    "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Constants.sol",
     "exportedSymbols": {
       "Constants": [
         107
@@ -1092,7 +1092,7 @@
     "src": "36:1757:1"
   },
   "legacyAST": {
-    "absolutePath": "project:/contracts/lib/Constants.sol",
+    "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Constants.sol",
     "exportedSymbols": {
       "Constants": [
         107
@@ -2175,17 +2175,9 @@
     "name": "solc",
     "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
   },
-  "networks": {
-    "5777": {
-      "events": {},
-      "links": {},
-      "address": "0x6a65d51162c5041Ba46A9cE01860A778DAf66cdB",
-      "transactionHash": "0x88fafbbbb350bc0ede582983a6f4b13a303b214a0a6f71f34ec21a09c50d17a6"
-    }
-  },
-  "schemaVersion": "3.4.1",
-  "updatedAt": "2021-11-08T20:50:20.849Z",
-  "networkType": "ethereum",
+  "networks": {},
+  "schemaVersion": "3.3.3",
+  "updatedAt": "2021-11-10T21:57:49.941Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

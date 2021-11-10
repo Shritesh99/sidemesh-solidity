@@ -27,7 +27,7 @@ module.exports = async function (deployer) {
 	await deployer.link(Enums, LockManager);
 	await deployer.link(Structs, [Verifier, Register, LockManager]);
 
-	const sidemesh = await deployer.deploy(Sidemesh, "HL_BESU");
+	const sidemesh = await deployer.deploy(Sidemesh);
 	await deployer.deploy(LockManager, sidemesh.address);
 	await deployer.deploy(Verifier);
 	await deployer.deploy(Register);

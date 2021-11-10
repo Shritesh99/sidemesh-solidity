@@ -1,18 +1,18 @@
 {
   "contractName": "Enums",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/lib/Enums.sol\":\"Enums\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/lib/Enums.sol\":{\"keccak256\":\"0xabaf8dd9e8a3d4db6c4d79767135655b754cedc5bd151f0bcb77ac625564219c\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://f4e64754f85bffa007d5aa29db8a4e2e1b4fdc34c5c364a2ee3916e3e319004a\",\"dweb:/ipfs/QmWFKD6rZ6rV63FR49WxRp6uU3nhJafG5uEsceEnNhGPw1\"]}},\"version\":1}",
-  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122036f3142e67dd4d87ca553b467e73e4b3e2aa331e545013bbf4270819b474680364736f6c63430008090033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122036f3142e67dd4d87ca553b467e73e4b3e2aa331e545013bbf4270819b474680364736f6c63430008090033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Enums.sol\":\"Enums\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Enums.sol\":{\"keccak256\":\"0xabaf8dd9e8a3d4db6c4d79767135655b754cedc5bd151f0bcb77ac625564219c\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://f4e64754f85bffa007d5aa29db8a4e2e1b4fdc34c5c364a2ee3916e3e319004a\",\"dweb:/ipfs/QmWFKD6rZ6rV63FR49WxRp6uU3nhJafG5uEsceEnNhGPw1\"]}},\"version\":1}",
+  "bytecode": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220578325fe0d3e19a4d19805107f49138e438f10f5ebce4e56e3fa3fdea098b26264736f6c63430008090033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220578325fe0d3e19a4d19805107f49138e438f10f5ebce4e56e3fa3fdea098b26264736f6c63430008090033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "69:439:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "sourceMap": "69:439:2:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;69:439:2;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "69:439:2:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity >=0.7.0 <0.9.0;\n\nlibrary Enums{\n    enum GlobalTransactionStatusType{\n        PRIMARY_TRANSACTION_PREPARED,\n        PRIMARY_TRANSACTION_COMMITTED,\n        PRIMARY_TRANSACTION_CANCELED\n    }\n\n    function checkCanceledOrCommiteded(uint status)internal pure returns(bool){\n        return status != uint(GlobalTransactionStatusType.PRIMARY_TRANSACTION_COMMITTED) &&\n            status != uint(GlobalTransactionStatusType.PRIMARY_TRANSACTION_CANCELED);\n    }\n}",
-  "sourcePath": "/home/rxshri99/WebProjects/sidemesh-solidity/contracts/lib/Enums.sol",
+  "sourcePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Enums.sol",
   "ast": {
-    "absolutePath": "project:/contracts/lib/Enums.sol",
+    "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Enums.sol",
     "exportedSymbols": {
       "Enums": [
         138
@@ -406,7 +406,7 @@
     "src": "36:472:2"
   },
   "legacyAST": {
-    "absolutePath": "project:/contracts/lib/Enums.sol",
+    "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Enums.sol",
     "exportedSymbols": {
       "Enums": [
         138
@@ -803,17 +803,9 @@
     "name": "solc",
     "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
   },
-  "networks": {
-    "5777": {
-      "events": {},
-      "links": {},
-      "address": "0x513076b69EBE650A815ad81abDA85457c517DB54",
-      "transactionHash": "0x35810655c7540bd4bade0413d4a3f5860f5b246b238a43d6ee97d4d24c103274"
-    }
-  },
-  "schemaVersion": "3.4.1",
-  "updatedAt": "2021-11-08T20:50:20.854Z",
-  "networkType": "ethereum",
+  "networks": {},
+  "schemaVersion": "3.3.3",
+  "updatedAt": "2021-11-10T21:57:49.943Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

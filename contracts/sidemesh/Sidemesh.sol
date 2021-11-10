@@ -6,15 +6,12 @@ import "../lib/Constants.sol";
 
 interface ISidemesh{
     function getNetwork()external view returns(string memory);
+    function setNetwork(string memory networkC)external;
 }
 
 contract Sidemesh is ISidemesh {
 
     string network;
-
-    constructor(string memory _network){
-        network = _network;
-    }
 
     function getNetwork()external view returns(string memory){
             require(Utils.isEmpty(network), Constants.ERROR_NETWORK);
@@ -24,6 +21,4 @@ contract Sidemesh is ISidemesh {
     function setNetwork(string memory networkC)public{
         network = networkC;
     }
-
-
 }

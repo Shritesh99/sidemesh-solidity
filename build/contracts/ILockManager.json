@@ -216,7 +216,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"cur\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"status\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ttlTime\",\"type\":\"uint256\"}],\"name\":\"getStateMaybeLocked\",\"outputs\":[{\"components\":[{\"components\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"network\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"chain\",\"type\":\"uint256\"}],\"internalType\":\"struct Structs.URI\",\"name\":\"uri\",\"type\":\"tuple\"},{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"internalType\":\"struct Structs.TransactionID\",\"name\":\"primaryPrepareTxId\",\"type\":\"tuple\"},{\"internalType\":\"bytes\",\"name\":\"prevState\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"updatingState\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"}],\"internalType\":\"struct Structs.Lock\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"value\",\"type\":\"bytes\"},{\"internalType\":\"string\",\"name\":\"primaryNetwork\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"primaryChain\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"primaryTxSender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"cur\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"status\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ttlTime\",\"type\":\"uint256\"}],\"name\":\"putLockedStateWithNetworkLock\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"value\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"cur\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"status\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ttlTime\",\"type\":\"uint256\"}],\"name\":\"putLockedStateWithPrimaryLock\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"value\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"cur\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"status\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ttlTime\",\"type\":\"uint256\"}],\"name\":\"putStateMaybeLocked\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/lock/LockManager.sol\":\"ILockManager\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/lib/Constants.sol\":{\"keccak256\":\"0x39d578a0be02e2651db6e9fabed55c70c4eff6b82f14378077abb538cade620f\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://5ae6bba23c923d7e0d63f2522b667df913dd3b289eb4f5e995423ec91ddf5453\",\"dweb:/ipfs/QmUjLHaGgrVxbAqcDfwiTGJSjRqfwc3cygNzUsDT9PquLG\"]},\"project:/contracts/lib/Enums.sol\":{\"keccak256\":\"0xabaf8dd9e8a3d4db6c4d79767135655b754cedc5bd151f0bcb77ac625564219c\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://f4e64754f85bffa007d5aa29db8a4e2e1b4fdc34c5c364a2ee3916e3e319004a\",\"dweb:/ipfs/QmWFKD6rZ6rV63FR49WxRp6uU3nhJafG5uEsceEnNhGPw1\"]},\"project:/contracts/lib/Structs.sol\":{\"keccak256\":\"0x4457cc59ca5e10d7e6cc4fc2a4b64ba078d17aba2c619eb71c3eabca34dd57d8\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://3c6c37c2e1803ef0974c5c6201b5cf95f01eb3edbd358afc711f399d4e2ee8b3\",\"dweb:/ipfs/QmRULZwbEkGnEF9tmuLbQjRgjVagPn6arq8Kj32seAfgcu\"]},\"project:/contracts/lib/Utils.sol\":{\"keccak256\":\"0xe3b854a4f60676464dbea16e4b1359f5361c60851d649ba800943f63562393a3\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://bac24023e8276e08fd3c3d1d255ac5ae89a54955000f7f3d0a9c3ccf6b3d71e7\",\"dweb:/ipfs/QmTY33MpEeY5ecmuVVRs4UV4JWjoCArWqbxK1QV7xPxRch\"]},\"project:/contracts/lock/LockManager.sol\":{\"keccak256\":\"0xc9021ed4e27ebdef7f27902ff60ea699187c183c24af3cbab77ef26372ac2679\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://991965883aac86265bf5399fd64b59016cee97759c514cb11c345836992e017f\",\"dweb:/ipfs/QmVe4gNFsxqYwb8dthwc93Fi1DkpeRnVkfbYtxuUrFbcXC\"]},\"project:/contracts/sidemesh/Sidemesh.sol\":{\"keccak256\":\"0x71101517f6ec2f2969cf4bdac3132ea8ed0cf91c92fcace7dd3e568bd818cad6\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://4317da4738781d20c93492f88431d5b04faa406bde48bb8f6042c924881f3f62\",\"dweb:/ipfs/QmNfTkiA4L4XKfvNc7ahs6WTaa2ZbNYn1Cb2Y5xKiMN1wq\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"cur\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"status\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ttlTime\",\"type\":\"uint256\"}],\"name\":\"getStateMaybeLocked\",\"outputs\":[{\"components\":[{\"components\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"network\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"chain\",\"type\":\"uint256\"}],\"internalType\":\"struct Structs.URI\",\"name\":\"uri\",\"type\":\"tuple\"},{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"internalType\":\"struct Structs.TransactionID\",\"name\":\"primaryPrepareTxId\",\"type\":\"tuple\"},{\"internalType\":\"bytes\",\"name\":\"prevState\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"updatingState\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"}],\"internalType\":\"struct Structs.Lock\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"value\",\"type\":\"bytes\"},{\"internalType\":\"string\",\"name\":\"primaryNetwork\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"primaryChain\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"primaryTxSender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"cur\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"status\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ttlTime\",\"type\":\"uint256\"}],\"name\":\"putLockedStateWithNetworkLock\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"value\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"cur\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"status\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ttlTime\",\"type\":\"uint256\"}],\"name\":\"putLockedStateWithPrimaryLock\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"value\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"cur\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"status\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ttlTime\",\"type\":\"uint256\"}],\"name\":\"putStateMaybeLocked\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/lock/LockManager.sol\":\"ILockManager\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Constants.sol\":{\"keccak256\":\"0x39d578a0be02e2651db6e9fabed55c70c4eff6b82f14378077abb538cade620f\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://5ae6bba23c923d7e0d63f2522b667df913dd3b289eb4f5e995423ec91ddf5453\",\"dweb:/ipfs/QmUjLHaGgrVxbAqcDfwiTGJSjRqfwc3cygNzUsDT9PquLG\"]},\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Enums.sol\":{\"keccak256\":\"0xabaf8dd9e8a3d4db6c4d79767135655b754cedc5bd151f0bcb77ac625564219c\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://f4e64754f85bffa007d5aa29db8a4e2e1b4fdc34c5c364a2ee3916e3e319004a\",\"dweb:/ipfs/QmWFKD6rZ6rV63FR49WxRp6uU3nhJafG5uEsceEnNhGPw1\"]},\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Structs.sol\":{\"keccak256\":\"0x4457cc59ca5e10d7e6cc4fc2a4b64ba078d17aba2c619eb71c3eabca34dd57d8\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://3c6c37c2e1803ef0974c5c6201b5cf95f01eb3edbd358afc711f399d4e2ee8b3\",\"dweb:/ipfs/QmRULZwbEkGnEF9tmuLbQjRgjVagPn6arq8Kj32seAfgcu\"]},\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Utils.sol\":{\"keccak256\":\"0xe3b854a4f60676464dbea16e4b1359f5361c60851d649ba800943f63562393a3\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://bac24023e8276e08fd3c3d1d255ac5ae89a54955000f7f3d0a9c3ccf6b3d71e7\",\"dweb:/ipfs/QmTY33MpEeY5ecmuVVRs4UV4JWjoCArWqbxK1QV7xPxRch\"]},\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/lock/LockManager.sol\":{\"keccak256\":\"0xc9021ed4e27ebdef7f27902ff60ea699187c183c24af3cbab77ef26372ac2679\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://991965883aac86265bf5399fd64b59016cee97759c514cb11c345836992e017f\",\"dweb:/ipfs/QmVe4gNFsxqYwb8dthwc93Fi1DkpeRnVkfbYtxuUrFbcXC\"]},\"/Users/shri99/WebProjects/sidemesh-solidity/contracts/sidemesh/Sidemesh.sol\":{\"keccak256\":\"0x8e07fdde99294b914f735881831f03eacb9b8706eb6b0ee1d10ba2f5ef3ef111\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://751bc0e06ff421ac21bb9e73f5b14c5b1600ab31b9fde06059a42abf1c4eae8c\",\"dweb:/ipfs/QmaQkYqb5xoEuKD1Gv1oEViRm8L2LTKcBk5BYuvrPZpQ8R\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -225,9 +225,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity >=0.7.0 <0.9.0;\n\nimport \"../lib/Utils.sol\";\nimport \"../lib/Constants.sol\";\nimport \"../lib/Enums.sol\";\nimport \"../lib/Structs.sol\";\n\nimport \"../sidemesh/Sidemesh.sol\";\n\ninterface ILockManager{\n    \n    function getStateMaybeLocked(\n        string memory key,\n        uint cur,\n        bool isValid,\n        uint status,\n        uint ttlTime)\n        external view returns(Structs.Lock memory);\n    \n    function putStateMaybeLocked(\n        string memory key,\n        bytes memory value,\n        uint cur,\n        bool isValid,\n        uint status,\n        uint ttlTime)\n        external;\n\n    function putLockedStateWithPrimaryLock(\n        string memory key,\n        bytes memory value,\n        uint cur,\n        bool isValid,\n        uint status,\n        uint ttlTime)\n        external;\n\n    function putLockedStateWithNetworkLock(\n        string memory key,\n        bytes memory value,\n        string memory primaryNetwork,\n        uint primaryChain,\n        address primaryTxSender,\n        uint cur,\n        bool isValid,\n        uint status,\n        uint ttlTime)\n        external;\n}\n\ninterface ILockManagerGlobalTransaction{\n    function getWSet(bytes32 xidKey, uint i)external view returns(string memory);\n    function getWSetLength(bytes32 hash)external view returns(uint);\n    function getWriteKeySet(bytes32 xidKey, uint i)external view returns(string memory);\n    function getWriteKeySetLength(bytes32 hash)external view returns(uint);\n    function getLock(bytes32 hash)external view returns(Structs.Lock memory);\n\n    function putLock(bytes32 hash, Structs.Lock memory lock)external;\n    function putWSet(bytes32 hash, string memory value)external;\n\n    function lockDeserializer(bytes memory data)external returns(Structs.Lock memory);\n}\n\ncontract LockManager is ILockManager, ILockManagerGlobalTransaction{\n\n    mapping(bytes32 => Structs.Lock)locks;\n    mapping(bytes32 => string[])writeKeySet;\n    mapping(bytes32 => string[])wSet;\n\n    ISidemesh sidemesh;\n\n    constructor(address _sidemesh){\n        sidemesh = ISidemesh(_sidemesh);\n    }\n\n    function checkTimeoutLock(Structs.Lock memory lock, uint cur, bool isValid, uint status, uint ttlTime)internal view returns(bool){\n        string memory network = sidemesh.getNetwork();\n        \n        require(Utils.equals(lock.primaryPrepareTxId.uri.network, network), Constants.ERROR_SECONDARY_LOCK);\n        require(lock.primaryPrepareTxId.uri.chain == block.chainid, Constants.ERROR_WRONG_CHAIN);\n\n        require(isValid, Constants.ERROR_NO_PRIMARY_TX);\n\n        require(\n            Enums.checkCanceledOrCommiteded(status),\n            Constants.ERROR_INVALID_TX_STATUS);\n        \n        require(ttlTime < cur, Constants.ERROR_INVALID_TIME);\n\n        return true;\n    }\n\n    function putWriteKey(string memory key)internal{\n        string memory network = sidemesh.getNetwork();\n        bytes32 xidKey = Utils.hash(abi.encodePacked(Constants.PREFIX, network, block.chainid, msg.sender));\n\n        writeKeySet[xidKey].push(key);\n    }\n\n    function lockSerializer(Structs.Lock memory lock)internal pure returns(bytes memory){\n        return abi.encodePacked(\n            lock.primaryPrepareTxId.uri.network, Constants.COLON,\n            lock.primaryPrepareTxId.uri.chain, Constants.COLON,\n            lock.primaryPrepareTxId.sender, Constants.COLON,\n            lock.prevState, Constants.COLON,\n            lock.updatingState, Constants.COLON,\n            Utils.toString(lock.isValid)\n            );\n    }\n    \n    bytes temp;\n    \n    function lockDeserializer(bytes memory data)public returns(Structs.Lock memory){\n        Structs.Lock memory lock;\n        Structs.TransactionID memory txID;\n        Structs.URI memory uri;\n        uint x = 0;\n        for(uint i=0; i<data.length; i++){\n            if(Utils.hash(abi.encodePacked(data[i])) == Utils.hash(abi.encodePacked(Constants.COLON))){\n                if(x == 0){\n                    uri.network = Utils.toString(temp);\n                }\n                if(x == 1){\n                    uri.chain = Utils.toUint(Utils.toString(temp));\n                    txID.uri = uri;\n                }\n                if(x == 2){\n                    txID.sender = Utils.toAddress(Utils.toString(temp)); \n                    lock.primaryPrepareTxId = txID;           \n                }\n                if(x == 3){\n                    lock.prevState = temp;\n                }\n                if(x == 4){\n                    lock.updatingState = temp;\n                }\n                if(x == 5){\n                    lock.isValid = Utils.stringToBool(Utils.toString(temp));\n                }\n                temp = \"\";\n                x++;\n            }else{\n                temp.push(data[i]);\n            } \n        }\n        return lock;\n    }\n\n    function getLock(bytes32 hash)external view returns(Structs.Lock memory){\n        return locks[hash];\n    }\n\n    function putLock(bytes32 hash, Structs.Lock memory lock)external{\n        locks[hash] = lock;\n    }\n\n    function getWriteKeySet(bytes32 xidKey, uint i)external view returns(string memory){\n        return writeKeySet[xidKey][i];\n    }\n\n    function getWriteKeySetLength(bytes32 hash)external view returns(uint){\n        return writeKeySet[hash].length;\n    }\n\n    function getWSet(bytes32 xidKey, uint i)external view returns(string memory){\n        return wSet[xidKey][i];\n    }\n\n    function getWSetLength(bytes32 hash)external view returns(uint){\n        return wSet[hash].length;\n    }\n\n    function putWSet(bytes32 hash, string memory value)external{\n        wSet[hash].push(value);\n    }\n\n    function getStateMaybeLocked(\n        string memory key,\n        uint cur,\n        bool isValid,\n        uint status,\n        uint ttlTime)\n        external view returns(Structs.Lock memory){\n            bytes32 keyHash = Utils.hash(abi.encodePacked(key));\n\n            require(checkTimeoutLock(locks[keyHash], cur, isValid, status, ttlTime), Constants.ERROR_EXPIRED_LOCK);\n\n            return locks[keyHash];\n        }\n\n    function putStateMaybeLocked(\n        string memory key,\n        bytes memory value,\n        uint cur,\n        bool isValid,\n        uint status,\n        uint ttlTime)\n        external{\n            bytes32 keyHash = Utils.hash(abi.encodePacked(key));\n\n            if(!locks[keyHash].isValid){\n                locks[keyHash] = lockDeserializer(value);\n                return;\n            }\n\n            require(checkTimeoutLock(locks[keyHash], cur, isValid, status, ttlTime), Constants.ERROR_EXPIRED_LOCK);\n        }\n\n    function putLockedStateWithPrimaryLock(\n        string memory key,\n        bytes memory value,\n        uint cur,\n        bool isValid,\n        uint status,\n        uint ttlTime)\n        external{\n            string memory network = sidemesh.getNetwork();\n            bytes32 keyHash = Utils.hash(abi.encodePacked(key));\n            \n            Structs.TransactionID memory primaryPrepareTxId = Structs.TransactionID(Structs.URI(network, block.chainid), msg.sender);\n            \n            if(!locks[keyHash].isValid){\n                Structs.Lock memory lock;\n                lock.updatingState = value;\n                lock.primaryPrepareTxId = primaryPrepareTxId;\n                lock.isValid = true;\n                locks[keyHash] = lock;\n                putWriteKey(key);\n                return;\n            }\n\n            require(checkTimeoutLock(locks[keyHash], cur, isValid, status, ttlTime), Constants.ERROR_EXPIRED_LOCK);\n        }\n\n    function putLockedStateWithNetworkLock(\n        string memory key,\n        bytes memory value,\n        string memory primaryNetwork,\n        uint primaryChain,\n        address primaryTxSender,\n        uint cur,\n        bool isValid,\n        uint status,\n        uint ttlTime)\n        external{\n            bytes32 keyHash = Utils.hash(abi.encodePacked(key));\n            Structs.TransactionID memory primaryPrepareTxId = Structs.TransactionID(Structs.URI(primaryNetwork, primaryChain), primaryTxSender);\n            \n            if(!locks[keyHash].isValid){\n                Structs.Lock memory lock;\n                lock.updatingState = value;\n                lock.primaryPrepareTxId = primaryPrepareTxId;\n                lock.isValid = true;\n                locks[keyHash] = lock;\n                putWriteKey(key);\n                return;\n            }\n\n            require(checkTimeoutLock(locks[keyHash], cur, isValid, status, ttlTime), Constants.ERROR_EXPIRED_LOCK);\n        }\n}",
-  "sourcePath": "/home/rxshri99/WebProjects/sidemesh-solidity/contracts/lock/LockManager.sol",
+  "sourcePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lock/LockManager.sol",
   "ast": {
-    "absolutePath": "project:/contracts/lock/LockManager.sol",
+    "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lock/LockManager.sol",
     "exportedSymbols": {
       "Constants": [
         107
@@ -242,13 +242,13 @@
         938
       ],
       "ISidemesh": [
-        2018
+        2027
       ],
       "LockManager": [
         1717
       ],
       "Sidemesh": [
-        2060
+        2059
       ],
       "Structs": [
         272
@@ -276,7 +276,7 @@
         "src": "36:31:5"
       },
       {
-        "absolutePath": "project:/contracts/lib/Utils.sol",
+        "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Utils.sol",
         "file": "../lib/Utils.sol",
         "id": 802,
         "nameLocation": "-1:-1:-1",
@@ -288,7 +288,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "project:/contracts/lib/Constants.sol",
+        "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Constants.sol",
         "file": "../lib/Constants.sol",
         "id": 803,
         "nameLocation": "-1:-1:-1",
@@ -300,7 +300,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "project:/contracts/lib/Enums.sol",
+        "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Enums.sol",
         "file": "../lib/Enums.sol",
         "id": 804,
         "nameLocation": "-1:-1:-1",
@@ -312,7 +312,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "project:/contracts/lib/Structs.sol",
+        "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Structs.sol",
         "file": "../lib/Structs.sol",
         "id": 805,
         "nameLocation": "-1:-1:-1",
@@ -324,13 +324,13 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "project:/contracts/sidemesh/Sidemesh.sol",
+        "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/sidemesh/Sidemesh.sol",
         "file": "../sidemesh/Sidemesh.sol",
         "id": 806,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1718,
-        "sourceUnit": 2061,
+        "sourceUnit": 2060,
         "src": "184:34:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -2179,7 +2179,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_ISidemesh_$2018",
+              "typeIdentifier": "t_contract$_ISidemesh_$2027",
               "typeString": "contract ISidemesh"
             },
             "typeName": {
@@ -2189,13 +2189,13 @@
                 "id": 958,
                 "name": "ISidemesh",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 2018,
+                "referencedDeclaration": 2027,
                 "src": "2006:9:5"
               },
-              "referencedDeclaration": 2018,
+              "referencedDeclaration": 2027,
               "src": "2006:9:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ISidemesh_$2018",
+                "typeIdentifier": "t_contract$_ISidemesh_$2027",
                 "typeString": "contract ISidemesh"
               }
             },
@@ -2222,7 +2222,7 @@
                       "referencedDeclaration": 960,
                       "src": "2071:8:5",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ISidemesh_$2018",
+                        "typeIdentifier": "t_contract$_ISidemesh_$2027",
                         "typeString": "contract ISidemesh"
                       }
                     },
@@ -2254,10 +2254,10 @@
                         "name": "ISidemesh",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2018,
+                        "referencedDeclaration": 2027,
                         "src": "2082:9:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_ISidemesh_$2018_$",
+                          "typeIdentifier": "t_type$_t_contract$_ISidemesh_$2027_$",
                           "typeString": "type(contract ISidemesh)"
                         }
                       },
@@ -2272,13 +2272,13 @@
                       "src": "2082:20:5",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ISidemesh_$2018",
+                        "typeIdentifier": "t_contract$_ISidemesh_$2027",
                         "typeString": "contract ISidemesh"
                       }
                     },
                     "src": "2071:31:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISidemesh_$2018",
+                      "typeIdentifier": "t_contract$_ISidemesh_$2027",
                       "typeString": "contract ISidemesh"
                     }
                   },
@@ -2394,7 +2394,7 @@
                         "referencedDeclaration": 960,
                         "src": "2278:8:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISidemesh_$2018",
+                          "typeIdentifier": "t_contract$_ISidemesh_$2027",
                           "typeString": "contract ISidemesh"
                         }
                       },
@@ -2405,7 +2405,7 @@
                       "lValueRequested": false,
                       "memberName": "getNetwork",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2017,
+                      "referencedDeclaration": 2021,
                       "src": "2278:19:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_string_memory_ptr_$",
@@ -3419,7 +3419,7 @@
                         "referencedDeclaration": 960,
                         "src": "2879:8:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISidemesh_$2018",
+                          "typeIdentifier": "t_contract$_ISidemesh_$2027",
                           "typeString": "contract ISidemesh"
                         }
                       },
@@ -3430,7 +3430,7 @@
                       "lValueRequested": false,
                       "memberName": "getNetwork",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2017,
+                      "referencedDeclaration": 2021,
                       "src": "2879:19:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_string_memory_ptr_$",
@@ -9173,7 +9173,7 @@
                         "referencedDeclaration": 960,
                         "src": "6805:8:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISidemesh_$2018",
+                          "typeIdentifier": "t_contract$_ISidemesh_$2027",
                           "typeString": "contract ISidemesh"
                         }
                       },
@@ -9184,7 +9184,7 @@
                       "lValueRequested": false,
                       "memberName": "getNetwork",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2017,
+                      "referencedDeclaration": 2021,
                       "src": "6805:19:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_string_memory_ptr_$",
@@ -11679,7 +11679,7 @@
     "src": "36:8468:5"
   },
   "legacyAST": {
-    "absolutePath": "project:/contracts/lock/LockManager.sol",
+    "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lock/LockManager.sol",
     "exportedSymbols": {
       "Constants": [
         107
@@ -11694,13 +11694,13 @@
         938
       ],
       "ISidemesh": [
-        2018
+        2027
       ],
       "LockManager": [
         1717
       ],
       "Sidemesh": [
-        2060
+        2059
       ],
       "Structs": [
         272
@@ -11728,7 +11728,7 @@
         "src": "36:31:5"
       },
       {
-        "absolutePath": "project:/contracts/lib/Utils.sol",
+        "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Utils.sol",
         "file": "../lib/Utils.sol",
         "id": 802,
         "nameLocation": "-1:-1:-1",
@@ -11740,7 +11740,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "project:/contracts/lib/Constants.sol",
+        "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Constants.sol",
         "file": "../lib/Constants.sol",
         "id": 803,
         "nameLocation": "-1:-1:-1",
@@ -11752,7 +11752,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "project:/contracts/lib/Enums.sol",
+        "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Enums.sol",
         "file": "../lib/Enums.sol",
         "id": 804,
         "nameLocation": "-1:-1:-1",
@@ -11764,7 +11764,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "project:/contracts/lib/Structs.sol",
+        "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/lib/Structs.sol",
         "file": "../lib/Structs.sol",
         "id": 805,
         "nameLocation": "-1:-1:-1",
@@ -11776,13 +11776,13 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "project:/contracts/sidemesh/Sidemesh.sol",
+        "absolutePath": "/Users/shri99/WebProjects/sidemesh-solidity/contracts/sidemesh/Sidemesh.sol",
         "file": "../sidemesh/Sidemesh.sol",
         "id": 806,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1718,
-        "sourceUnit": 2061,
+        "sourceUnit": 2060,
         "src": "184:34:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -13631,7 +13631,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_ISidemesh_$2018",
+              "typeIdentifier": "t_contract$_ISidemesh_$2027",
               "typeString": "contract ISidemesh"
             },
             "typeName": {
@@ -13641,13 +13641,13 @@
                 "id": 958,
                 "name": "ISidemesh",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 2018,
+                "referencedDeclaration": 2027,
                 "src": "2006:9:5"
               },
-              "referencedDeclaration": 2018,
+              "referencedDeclaration": 2027,
               "src": "2006:9:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ISidemesh_$2018",
+                "typeIdentifier": "t_contract$_ISidemesh_$2027",
                 "typeString": "contract ISidemesh"
               }
             },
@@ -13674,7 +13674,7 @@
                       "referencedDeclaration": 960,
                       "src": "2071:8:5",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ISidemesh_$2018",
+                        "typeIdentifier": "t_contract$_ISidemesh_$2027",
                         "typeString": "contract ISidemesh"
                       }
                     },
@@ -13706,10 +13706,10 @@
                         "name": "ISidemesh",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2018,
+                        "referencedDeclaration": 2027,
                         "src": "2082:9:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_ISidemesh_$2018_$",
+                          "typeIdentifier": "t_type$_t_contract$_ISidemesh_$2027_$",
                           "typeString": "type(contract ISidemesh)"
                         }
                       },
@@ -13724,13 +13724,13 @@
                       "src": "2082:20:5",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ISidemesh_$2018",
+                        "typeIdentifier": "t_contract$_ISidemesh_$2027",
                         "typeString": "contract ISidemesh"
                       }
                     },
                     "src": "2071:31:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISidemesh_$2018",
+                      "typeIdentifier": "t_contract$_ISidemesh_$2027",
                       "typeString": "contract ISidemesh"
                     }
                   },
@@ -13846,7 +13846,7 @@
                         "referencedDeclaration": 960,
                         "src": "2278:8:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISidemesh_$2018",
+                          "typeIdentifier": "t_contract$_ISidemesh_$2027",
                           "typeString": "contract ISidemesh"
                         }
                       },
@@ -13857,7 +13857,7 @@
                       "lValueRequested": false,
                       "memberName": "getNetwork",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2017,
+                      "referencedDeclaration": 2021,
                       "src": "2278:19:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_string_memory_ptr_$",
@@ -14871,7 +14871,7 @@
                         "referencedDeclaration": 960,
                         "src": "2879:8:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISidemesh_$2018",
+                          "typeIdentifier": "t_contract$_ISidemesh_$2027",
                           "typeString": "contract ISidemesh"
                         }
                       },
@@ -14882,7 +14882,7 @@
                       "lValueRequested": false,
                       "memberName": "getNetwork",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2017,
+                      "referencedDeclaration": 2021,
                       "src": "2879:19:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_string_memory_ptr_$",
@@ -20625,7 +20625,7 @@
                         "referencedDeclaration": 960,
                         "src": "6805:8:5",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ISidemesh_$2018",
+                          "typeIdentifier": "t_contract$_ISidemesh_$2027",
                           "typeString": "contract ISidemesh"
                         }
                       },
@@ -20636,7 +20636,7 @@
                       "lValueRequested": false,
                       "memberName": "getNetwork",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2017,
+                      "referencedDeclaration": 2021,
                       "src": "6805:19:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_string_memory_ptr_$",
@@ -23135,8 +23135,8 @@
     "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.1",
-  "updatedAt": "2021-11-08T20:10:01.244Z",
+  "schemaVersion": "3.3.3",
+  "updatedAt": "2021-11-10T22:37:53.349Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
